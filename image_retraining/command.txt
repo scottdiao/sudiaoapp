@@ -1,0 +1,5 @@
+Retrain script:
+python retrain.py --image_dir C:\ML\sudiaoapp\image_retraining\building_photos
+
+Tensorboard:
+tensorboard --logdir /tmp/retrain_logs --host=127.0.0.1

@@ -1,0 +1,1 @@
+python label_image.py --graph=C:\ML\sudiaoapp\image_retraining\model\output_graph.pb --labels=C:\ML\sudiaoapp\image_retraining\model\output_labels.txt --input_layer=Placeholder --output_layer=final_result --image=C:\ML\sudiaoapp\image_retraining\test\images.jpg
