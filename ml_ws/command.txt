@@ -1,0 +1,7 @@
+cd C:\ML\sudiaoapp\ml_ws
+set FLASK_APP=ml_ws.py
+flask run
+
+curl -i -H "Content-Type: application/json" -X POST -d '{"uri":"https://upload.wikimedia.org/wikipedia/commons/2/23/Space_Needle_2011-07-04.jpg"}' https://atomic-amulet-199016.appspot.com/download
+
+curl localhost:5000/cnn
