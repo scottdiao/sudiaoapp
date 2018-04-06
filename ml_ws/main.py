@@ -3,15 +3,14 @@ from __future__ import division
 from __future__ import print_function
 from flask import Flask, jsonify, request
 import urllib.request
-
-
 import argparse
-
+from flask_cors import CORS
 import numpy as np
 import tensorflow as tf
 
 
 app = Flask(__name__)
+CORS(app)
 
 file_name = "./download.jpg"
 model_file = "./model/output_graph.pb"
@@ -73,47 +72,50 @@ def load_labels(label_file):
 def index():
     return "This is a building image recognition web service"
 
+def run_cnn():
+	graph = load_graph(model_file)
+	t = read_tensor_from_image_file(
+	  file_name,
+	  input_height=input_height,
+	  input_width=input_width,
+	  input_mean=input_mean,
+	  input_std=input_std)
+
+	input_name = "import/" + input_layer
+	output_name = "import/" + output_layer
+	input_operation = graph.get_operation_by_name(input_name)
+	output_operation = graph.get_operation_by_name(output_name)
+
+	with tf.Session(graph=graph) as sess:
+		results = sess.run(output_operation.outputs[0], {
+			input_operation.outputs[0]: t
+		})
+		results = np.squeeze(results)
+
+	top_k = results.argsort()[-5:][::-1]
+	labels = load_labels(label_file)
+	resjsonlist = []
+	for i in top_k:
+		resjson = {
+			'label': labels[i],
+			'probability': str(results[i])
+	    }
+		resjsonlist.append(resjson)
+		print(labels[i], results[i])
+	response =  jsonify(resjsonlist)
+
+	return response
+
 @app.route('/download', methods=['POST'])
 def download_image():
     print("downloading........")
     if not request.json or not 'uri' in request.json:
         abort(400)
     urllib.request.urlretrieve(request.json['uri'], "./download.jpg")
+    response = run_cnn()
+    response.headers.add('Access-Control-Allow-Origin', '*')
 
-    return "download success", 201
-
-@app.route('/cnn', methods=['GET'])
-def run_cnn():
-  graph = load_graph(model_file)
-  t = read_tensor_from_image_file(
-      file_name,
-      input_height=input_height,
-      input_width=input_width,
-      input_mean=input_mean,
-      input_std=input_std)
-
-  input_name = "import/" + input_layer
-  output_name = "import/" + output_layer
-  input_operation = graph.get_operation_by_name(input_name)
-  output_operation = graph.get_operation_by_name(output_name)
-
-  with tf.Session(graph=graph) as sess:
-    results = sess.run(output_operation.outputs[0], {
-        input_operation.outputs[0]: t
-    })
-  results = np.squeeze(results)
-
-  top_k = results.argsort()[-5:][::-1]
-  labels = load_labels(label_file)
-  resjsonlist = []
-  for i in top_k:
-    resjson = {
-      'label': labels[i],
-      'probability': str(results[i])
-    }
-    resjsonlist.append(resjson)
-    print(labels[i], results[i])
-  return jsonify(resjsonlist)
+    return response
 
 
 if __name__ == '__main__':
