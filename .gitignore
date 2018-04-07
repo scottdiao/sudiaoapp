@@ -2,3 +2,6 @@
 /ml_ws/env/
 /ms_ws/download.jpg
 /ml_ws/__pycache__/
+/ml_ws/test_image/
+/app/.idea/
+/npm-debug.log

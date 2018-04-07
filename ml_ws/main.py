@@ -2,6 +2,7 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 from flask import Flask, jsonify, request
+from werkzeug import secure_filename
 import urllib.request
 import argparse
 from flask_cors import CORS
@@ -12,7 +13,6 @@ import tensorflow as tf
 app = Flask(__name__)
 CORS(app)
 
-file_name = "./download.jpg"
 model_file = "./model/output_graph.pb"
 label_file = "./model/output_labels.txt"
 input_height = 299
@@ -72,7 +72,7 @@ def load_labels(label_file):
 def index():
     return "This is a building image recognition web service"
 
-def run_cnn():
+def run_cnn(file_name):
 	graph = load_graph(model_file)
 	t = read_tensor_from_image_file(
 	  file_name,
@@ -106,15 +106,26 @@ def run_cnn():
 
 	return response
 
-@app.route('/download', methods=['POST'])
-def download_image():
+@app.route('/building_uri', methods=['POST'])
+def building_uri():
     print("downloading........")
     if not request.json or not 'uri' in request.json:
         abort(400)
     urllib.request.urlretrieve(request.json['uri'], "./download.jpg")
-    response = run_cnn()
+    response = run_cnn("download.jpg")
     response.headers.add('Access-Control-Allow-Origin', '*')
 
+    return response
+
+@app.route('/building_file', methods=['POST'])
+def building_file():
+    print("receive file");
+    print("method"+request.method);
+    f = request.files['file']
+    print("filename"+f.filename)
+    f.save(secure_filename(f.filename))
+    print("file_name"+f.filename)
+    response = run_cnn(f.filename)
     return response
 
 
