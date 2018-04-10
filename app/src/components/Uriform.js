@@ -97,7 +97,7 @@ async handleSubmit(event) {
                       <div>
                           {button}
                       </div>
-                      <div className="spacer"/>
+                      <div className="small-spacer"/>
                   </form>
               </div>
           </div>

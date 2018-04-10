@@ -78,6 +78,36 @@ class Result extends Component {
         } else{
             return (
                 <div>
+                    <div align="center">
+                        <label><h3>Best Result:</h3></label>
+                        <button type="button" className="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal">
+                            {this.state.chartData.labels[0]}
+                        </button>
+                    </div>
+                    <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog"
+                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div className="modal-dialog" role="document">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <h5 className="modal-title" id="exampleModalLabel">Building Detail</h5>
+                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div className="modal-body">
+                                    <iframe width="300" height="300" frameBorder="0" style={{border:1}}
+                                        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVTk5sRRV8IdnimweHLh1E_zxM3WK1u3g&q=Space+Needle,Seattle+WA" allowFullScreen>
+                                    </iframe>
+                                </div>
+                                <div className="modal-footer">
+                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                     <ul className="nav nav-pills nav-fill mb-3" id="pills-tab" role="tablist">
                         <li className="nav-item">
                             <a className="nav-link active" id="pills-table-tab" data-toggle="pill" href={"#"+this.state.tapId.table} role="tab"
