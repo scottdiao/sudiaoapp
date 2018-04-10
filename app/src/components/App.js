@@ -10,10 +10,11 @@ import Fileform from './Fileform';
 import Uriform from './Uriform';
 
 
+
 class App extends Component {
   render() {
     return (
-      <div class="container">
+      <div className="container">
         <Header />
         <div className="spacer"/>
         <div className="row">
@@ -25,9 +26,7 @@ class App extends Component {
               <Route path='/introduction' component={Introduction}/>
           </Switch>
           <div className="spacer"/>
-          <div className="row" >
-              <div className="col" />
-
+          <div className="row justify-content-center" >
               <div className="col-8" align="center">
                   <ul className="nav nav-tabs nav-fill" id="myTab" role="tablist">
                       <li className="nav-item">
@@ -40,7 +39,6 @@ class App extends Component {
                       </li>
                   </ul>
               </div>
-              <div className="col" />
           </div>
           <div className="row" >
               <div className="col" align="center">

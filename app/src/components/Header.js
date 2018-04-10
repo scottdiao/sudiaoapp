@@ -1,6 +1,5 @@
 import React from 'react'
 import blocks from './blocks.svg';
-import logo from './logo.svg';
 
 const Header = () => (
   <div className="App">

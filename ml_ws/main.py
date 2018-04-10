@@ -8,6 +8,7 @@ import argparse
 from flask_cors import CORS
 import numpy as np
 import tensorflow as tf
+import os
 
 
 app = Flask(__name__)
@@ -119,13 +120,12 @@ def building_uri():
 
 @app.route('/building_file', methods=['POST'])
 def building_file():
-    print("receive file");
-    print("method"+request.method);
     f = request.files['file']
     print("filename"+f.filename)
-    f.save(secure_filename(f.filename))
-    print("file_name"+f.filename)
-    response = run_cnn(f.filename)
+    file_name = "./uploads/"+secure_filename(f.filename)
+    f.save(file_name)
+    response = run_cnn(file_name)
+    os.remove(file_name)
     return response
 
 
