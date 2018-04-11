@@ -6,7 +6,7 @@ class Result extends Component {
         super(props);
         this.state = {
             chartData:props.chartData,
-            uriChartDate:props.uriChartDate,
+            resultList:props.resultList,
             showBar:false,
             tapId:{
                 table: "pills-table",
@@ -22,6 +22,7 @@ class Result extends Component {
         console.log("receive prop")
         this.setState({
             chartData: nextProps.chartData,
+            resultList: nextProps.resultList,
             tapId:{
                 table: nextProps.uri?"pills-table-uri":"pills-table",
                 bar: nextProps.uri?"pills-bar-uri":"pills-bar",
@@ -76,6 +77,7 @@ class Result extends Component {
         if(Object.keys(this.state.chartData).length === 0 || Object.keys(this.state.chartData.datasets).length === 0) {
             return null
         } else{
+            const mapsrc = "https://www.google.com/maps/embed/v1/place?key=AIzaSyBVTk5sRRV8IdnimweHLh1E_zxM3WK1u3g&q=place_id:"+this.state.resultList[this.state.chartData.labels[0]].place_id ;
             return (
                 <div>
                     <div align="center">
@@ -95,9 +97,16 @@ class Result extends Component {
                                     </button>
                                 </div>
                                 <div className="modal-body">
-                                    <iframe width="300" height="300" frameBorder="0" style={{border:1}}
-                                        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVTk5sRRV8IdnimweHLh1E_zxM3WK1u3g&q=Space+Needle,Seattle+WA" allowFullScreen>
-                                    </iframe>
+
+                                    <label>Name:</label>{this.state.chartData.labels[0]}
+                                    <label></label>{this.state.resultList[this.state.chartData.labels[0]].alias}
+                                    <div className="row ">
+                                        <div className="col" align="center">
+                                            <iframe width="300" height="300" frameBorder="0" style={{border:1}}
+                                                src={mapsrc} allowFullScreen>
+                                            </iframe>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div className="modal-footer">
                                     <button type="button" className="btn btn-secondary" data-dismiss="modal">Close

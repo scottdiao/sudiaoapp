@@ -15,7 +15,8 @@ class Fileform extends React.Component {
         hasError:false,
         errorMes:""
       },
-      chartData:{}
+      chartData:{},
+       resultList:{}
      }
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -49,15 +50,22 @@ async handleSubmit(event) {
     }
     const labels = [];
     const probability = [];
-    const result = [];
+    const resultList = {};
 
     {
         Object.keys(res).map(function (key) {
-            result.push(res[key].label + " " + res[key].probability);
+            const detail = {
+                alias:res[key].alias,
+                place_id:res[key].place_id
+            }
+            resultList[res[key].label]=detail;
+            // result.push(res[key].label + " " + res[key].probability);
             labels.push(res[key].label);
             probability.push(res[key].probability);
         })
     }
+
+    console.log(JSON.stringify(resultList));
 
     const chartData = {
         labels: labels,
@@ -73,7 +81,7 @@ async handleSubmit(event) {
             }
         ]
     }
-    this.setState({result: result, chartData : chartData});
+    this.setState({resultList: resultList, chartData : chartData});
 
   }
 
@@ -128,7 +136,7 @@ async handleSubmit(event) {
             </div>
             <div className="row justify-content-center" >
               <div className="col-8" >
-                 <Result chartData={this.state.chartData} uri={false} />
+                 <Result resultList={this.state.resultList} chartData={this.state.chartData} uri={false} />
               </div>
             </div>
           </div>

@@ -9,6 +9,7 @@ from flask_cors import CORS
 import numpy as np
 import tensorflow as tf
 import os
+from google.cloud import datastore
 
 
 app = Flask(__name__)
@@ -33,6 +34,15 @@ def load_graph(model_file):
     tf.import_graph_def(graph_def)
 
   return graph
+
+def load_building(ds, label):
+   print ("load building"+label)
+   query = ds.query(kind='Buildings')
+   query.add_filter('name', '=', label)
+
+   query_iter = query.fetch()
+   for entity in query_iter:
+      return entity;
 
 def read_tensor_from_image_file(file_name,
                                 input_height=299,
@@ -74,38 +84,42 @@ def index():
     return "This is a building image recognition web service"
 
 def run_cnn(file_name):
-	graph = load_graph(model_file)
-	t = read_tensor_from_image_file(
-	  file_name,
-	  input_height=input_height,
-	  input_width=input_width,
-	  input_mean=input_mean,
-	  input_std=input_std)
+    graph = load_graph(model_file)
+    t = read_tensor_from_image_file(
+      file_name,
+      input_height=input_height,
+      input_width=input_width,
+      input_mean=input_mean,
+      input_std=input_std)
 
-	input_name = "import/" + input_layer
-	output_name = "import/" + output_layer
-	input_operation = graph.get_operation_by_name(input_name)
-	output_operation = graph.get_operation_by_name(output_name)
+    input_name = "import/" + input_layer
+    output_name = "import/" + output_layer
+    input_operation = graph.get_operation_by_name(input_name)
+    output_operation = graph.get_operation_by_name(output_name)
 
-	with tf.Session(graph=graph) as sess:
-		results = sess.run(output_operation.outputs[0], {
-			input_operation.outputs[0]: t
-		})
-		results = np.squeeze(results)
+    with tf.Session(graph=graph) as sess:
+        results = sess.run(output_operation.outputs[0], {
+            input_operation.outputs[0]: t
+        })
+        results = np.squeeze(results)
 
-	top_k = results.argsort()[-5:][::-1]
-	labels = load_labels(label_file)
-	resjsonlist = []
-	for i in top_k:
-		resjson = {
-			'label': labels[i],
-			'probability': str(results[i])
-	    }
-		resjsonlist.append(resjson)
-		print(labels[i], results[i])
-	response =  jsonify(resjsonlist)
+    top_k = results.argsort()[-5:][::-1]
+    labels = load_labels(label_file)
+    ds = datastore.Client()
+    resjsonlist = []
+    for i in top_k:
+        entity = load_building(ds, labels[i])
+        resjson = {
+            'label': labels[i],
+            'alias': entity['alias'],
+            'place_id': entity['place_id'],
+            'probability': str(results[i])
+        }
+        resjsonlist.append(resjson)
+        print(labels[i], results[i])
+    response =  jsonify(resjsonlist)
 
-	return response
+    return response
 
 @app.route('/building_uri', methods=['POST'])
 def building_uri():
@@ -127,6 +141,7 @@ def building_file():
     response = run_cnn(file_name)
     os.remove(file_name)
     return response
+
 
 
 if __name__ == '__main__':
