@@ -4,11 +4,6 @@ import {Modal} from './Modal'
 import ResultTable from './ResultTable'
 import {capitalize} from '../api/Api'
 
-// function capitalize(str) {
-//     return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-// }
-
-
 class Result extends Component {
     constructor(props){
         super(props);

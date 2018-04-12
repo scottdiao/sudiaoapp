@@ -42,6 +42,18 @@ export const query_building_file = async (data)=>{
     }
 }
 
+export const query_building_list = async ()=>{
+    try {
+        console.log("query cnn file")
+        let response = await fetch('http://localhost:5000/building_list');
+        let responseJson = await response.json()
+
+        return responseJson;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 export function capitalize(str) {
     if(str===''||str===undefined){
         return;

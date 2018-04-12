@@ -1,46 +1,6 @@
 import React, {Component} from 'react';
 import {Bar, Line, Pie} from 'react-chartjs-2';
 
-export function ResultTable(props){
-    if(Object.keys(props.chartData).length === 0 || Object.keys(props.chartData.datasets).length === 0){
-        return null
-    }else {
-        const labels = props.chartData.labels;
-        const probability = props.chartData.datasets[0].data;
-        const rows = [];
-
-        for (var i = 0; i < labels.length; i++) {
-            const tabledata = {
-                id: "row-"+i,
-                label: labels[i],
-                probability: probability[i]
-            }
-            rows.push(tabledata);
-        }
-        const tableRow = rows.map((row) =>
-            <tr>
-                <td>{row.label}</td>
-                <td>{row.probability}</td>
-            </tr>
-        )
-
-
-        return (
-            <table className="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Probability</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {tableRow}
-                </tbody>
-            </table>
-        )
-    }
-}
-
 export function BarChart(props){
     console.log("call barchart")
     const chartData = props.chartData;
