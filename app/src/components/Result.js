@@ -1,5 +1,13 @@
 import React, {Component} from 'react'
-import {PieChart, BarChart, ResultTable} from './Chart'
+import {PieChart, BarChart} from './Chart'
+import {Modal} from './Modal'
+import ResultTable from './ResultTable'
+import {capitalize} from '../api/Api'
+
+// function capitalize(str) {
+//     return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+// }
+
 
 class Result extends Component {
     constructor(props){
@@ -78,45 +86,16 @@ class Result extends Component {
             return null
         } else{
             const mapsrc = "https://www.google.com/maps/embed/v1/place?key=AIzaSyBVTk5sRRV8IdnimweHLh1E_zxM3WK1u3g&q=place_id:"+this.state.resultList[this.state.chartData.labels[0]].place_id ;
+            const bestResult = this.state.chartData.labels[0];
             return (
                 <div>
                     <div align="center">
-                        <label><h3>Best Result:</h3></label>
-                        <button type="button" className="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal">
-                            {this.state.chartData.labels[0]}
+                        <h4>Best Result</h4>
+                        <button type="button" className="btn btn-outline-info" data-toggle="modal" data-target="#resultModal">
+                            {capitalize(bestResult)}
                         </button>
                     </div>
-                    <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog"
-                         aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div className="modal-dialog" role="document">
-                            <div className="modal-content">
-                                <div className="modal-header">
-                                    <h5 className="modal-title" id="exampleModalLabel">Building Detail</h5>
-                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div className="modal-body">
-
-                                    <label>Name:</label>{this.state.chartData.labels[0]}
-                                    <label></label>{this.state.resultList[this.state.chartData.labels[0]].alias}
-                                    <div className="row ">
-                                        <div className="col" align="center">
-                                            <iframe width="300" height="300" frameBorder="0" style={{border:1}}
-                                                src={mapsrc} allowFullScreen>
-                                            </iframe>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="modal-footer">
-                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
+                    <Modal id="resultModal" name={capitalize(bestResult)} alias={this.state.resultList[bestResult].alias} mapsrc={mapsrc}/>
                     <ul className="nav nav-pills nav-fill mb-3" id="pills-tab" role="tablist">
                         <li className="nav-item">
                             <a className="nav-link active" id="pills-table-tab" data-toggle="pill" href={"#"+this.state.tapId.table} role="tab"
@@ -135,7 +114,7 @@ class Result extends Component {
                     <div className="tab-content" id="pills-tabContent">
 
                         <div className="tab-pane fade show active" id = {this.state.tapId.table} role = "tabpanel" aria-labelledby = "pills-table-tab" >
-                            <ResultTable chartData={this.state.chartData} />
+                            <ResultTable chartData={this.state.chartData} resultList={this.state.resultList} />
                         </div>
                         <div className="tab-pane fade" id={this.state.tapId.bar} role="tabpanel"  aria-labelledby="pills-bar-tab">
                             <BarChart chartData={this.state.chartData} />

@@ -41,3 +41,17 @@ export const query_building_file = async (data)=>{
         console.error(error);
     }
 }
+
+export function capitalize(str) {
+    if(str===''||str===undefined){
+        return;
+    }
+    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+}
+
+export function convertWikiLink(str) {
+    if(str===''||str===undefined){
+        return;
+    }
+    return str.replace(/\s/g, '_');
+}

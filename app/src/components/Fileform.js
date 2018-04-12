@@ -16,7 +16,7 @@ class Fileform extends React.Component {
         errorMes:""
       },
       chartData:{},
-       resultList:{}
+      resultList:{}
      }
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -43,9 +43,9 @@ async handleSubmit(event) {
     this.setState({isLoading: false});
     if(typeof(res) === 'undefined' || res === null){
         this.setState({error: {
-                hasError:true,
-                errorMes:"Can not resolve this image uri"
-            }});
+            hasError:true,
+            errorMes:"Can not resolve this image uri"
+        }});
         return
     }
     const labels = [];
@@ -117,19 +117,19 @@ async handleSubmit(event) {
                                   <p>Try dropping some files here, or click to select files to upload.</p>
                               </Dropzone>
                               Dropped files
-                              <div className="spacer"/>
+                              <div className="spacerSmall"/>
                               <ul className="list-group">
                                   {
                                       this.state.files.map(f => <li className="list-group-item" key={f.name}>{f.name} - {f.size} bytes</li>)
                                   }
                               </ul>
                           </div>
-                          <div className="spacer"/>
+                          <div className="spacerSmall"/>
                           <div>
                               {button}
                           </div>
 
-                          <div className="small-spacer"/>
+                          <div className="spacerSmall"/>
 
                       </form>
                   </div>

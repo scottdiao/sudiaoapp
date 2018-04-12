@@ -11,6 +11,7 @@ export function ResultTable(props){
 
         for (var i = 0; i < labels.length; i++) {
             const tabledata = {
+                id: "row-"+i,
                 label: labels[i],
                 probability: probability[i]
             }
