@@ -23,8 +23,6 @@
     color: #000000;
 }
 
-ul.nav { text-align: center; }
-ul.nav li { display: inline-block; }
 
 .App-intro {
   font-size: large;
@@ -32,12 +30,17 @@ ul.nav li { display: inline-block; }
 
 .spacer {
     height:40px;
+    height:40px;
 }
 .spacerSmall {
     height:20px;
 }
 .spacerTiny {
     height:5px;
+}
+
+.fileDropZone {
+    background-color:#ffffff!important;
 }
 
 @keyframes App-logo-spin {

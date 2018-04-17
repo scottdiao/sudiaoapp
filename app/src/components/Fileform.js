@@ -1,15 +1,22 @@
 import React from 'react';
+import ReactDOMServer from 'react-dom/server';
 import './css/foundation.css';
 import './css/app.css';
+import '../../node_modules/react-dropzone-component/styles/filepicker.css'
+import '../../node_modules/dropzone/dist/min/dropzone.min.css'
 import Dropzone from 'react-dropzone';
-import {query_building_file} from '../api/Api'
+import {query_building_file, capitalize} from '../api/Api'
 import Result from './Result';
 import ErrorMessage from './ErrorMessage'
+import ReactDOM from 'react-dom';
+// import DropzoneComponent from 'react-dropzone-component';
+import DropzoneComponent from './DropzoneComponent';
 
 class Fileform extends React.Component {
   constructor() {
     super()
-    this.state = { files: [],
+    this.state = {
+      files: {},
       isLoading: false,
       error: {
         hasError:false,
@@ -18,19 +25,54 @@ class Fileform extends React.Component {
       chartData:{},
       resultList:{}
      }
+      this.djsConfig = {
+          addRemoveLinks: true,
+          acceptedFiles: "image/jpeg,image/png",
+          // autoProcessQueue: false,
+          maxFiles: 1
+      };
+
+      this.componentConfig = {
+          iconFiletypes: ['.jpg', '.png'],
+          showFiletypeIcon: true,
+          postUrl: 'http://localhost:5000/upload'
+      };
+      this.callbackArray = [() => console.log('Hi!'), () => console.log('Ho!')];
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleFileRemoved=this.handleFileRemoved.bind(this);
+      // this.handleFileAdded = this.handleFileAdded.bind(this);
   }
+
+    handleFileAdded(file) {
+        this.setState({
+            files:file
+        });
+        console.log(this.state.files)
+    }
+
+    handleFileRemoved() {
+        console.log("remove file")
+        this.setState({
+            files:{}
+                });
+    }
+
+
+
 
 
 async handleSubmit(event) {
+    const uuidv1 = require('uuid/v1');
+    const uuid = uuidv1();
+
     this.setState({error: {
             hasError:false,
             errorMes:""
         }});
     event.preventDefault();
     const data = new FormData(event.target);
-    const file = this.state.files[0]
-    if(typeof(file) === 'undefined' || file === null){
+    const file = this.state.files
+    if(Object.keys(this.state.files).length === 0){
         this.setState({error: {
                 hasError:true,
                 errorMes:"No image to upload"
@@ -38,6 +80,7 @@ async handleSubmit(event) {
         return
     }
     data.append('file', file)
+    data.append('uuid', uuid)
     this.setState({isLoading: true});
     let res = await query_building_file(data);
     this.setState({isLoading: false});
@@ -77,6 +120,8 @@ async handleSubmit(event) {
                     'rgba(255, 99, 132, 0.6)',
                     'rgba(54, 162, 235, 0.6)',
                     'rgba(255, 206, 86, 0.6)',
+                    'rgba(75, 192, 192, 0.6)',
+                    'rgba(153, 102, 255, 0.6)'
                 ]
             }
         ]
@@ -106,24 +151,39 @@ async handleSubmit(event) {
           <button className="btn btn-outline-primary" type="submit">Analysis</button>
       );
 
+      const config = this.componentConfig;
+      const djsConfig = this.djsConfig;
+
+      // For a list of all possible events (there are many), see README.md!
+      const eventHandlers = {
+          addedfile: this.handleFileAdded.bind(this),
+          drop: this.callbackArray,
+          removedfile:this.handleFileRemoved
+      }
+
+
 
       return   <div>
                 <ErrorMessage error={this.state.error} />
                 <div className="row justify-content-center">
-                  <div className="col-6" align="center">
+                  <div className="col-4" align="center">
+
                       <form onSubmit={this.handleSubmit.bind(this)} name="dropzone" encType="multipart/form-data">
-                          <div className="dropzone">
-                              <Dropzone onDrop={this.onDrop.bind(this)}>
-                                  <p>Try dropping some files here, or click to select files to upload.</p>
-                              </Dropzone>
-                              Dropped files
-                              <div className="spacerSmall"/>
-                              <ul className="list-group">
-                                  {
-                                      this.state.files.map(f => <li className="list-group-item" key={f.name}>{f.name} - {f.size} bytes</li>)
-                                  }
-                              </ul>
-                          </div>
+                          <DropzoneComponent className="fileDropZone" config={config}
+                                             eventHandlers={eventHandlers}
+                                             djsConfig={djsConfig} />
+                          {/*<div className="dropzone">*/}
+                              {/*<Dropzone onDrop={this.onDrop.bind(this)}>*/}
+                                  {/*<p>Try dropping some files here, or click to select files to upload.</p>*/}
+                              {/*</Dropzone>*/}
+                              {/*Dropped files*/}
+                              {/*<div className="spacerSmall"/>*/}
+                              {/*<ul className="list-group">*/}
+                                  {/*{*/}
+                                      {/*this.state.files.map(f => <li className="list-group-item" key={f.name}>{f.name} - {f.size} bytes</li>)*/}
+                                  {/*}*/}
+                              {/*</ul>*/}
+                          {/*</div>*/}
                           <div className="spacerSmall"/>
                           <div>
                               {button}

@@ -107,7 +107,6 @@ class Result extends Component {
                     </ul>
 
                     <div className="tab-content" id="pills-tabContent">
-
                         <div className="tab-pane fade show active" id = {this.state.tapId.table} role = "tabpanel" aria-labelledby = "pills-table-tab" >
                             <ResultTable chartData={this.state.chartData} resultList={this.state.resultList} />
                         </div>

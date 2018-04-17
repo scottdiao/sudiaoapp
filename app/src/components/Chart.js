@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Bar, Line, Pie} from 'react-chartjs-2';
+import {Bar, Line, Pie, HorizontalBar} from 'react-chartjs-2';
 
 export function BarChart(props){
     console.log("call barchart")
@@ -17,15 +17,16 @@ export function BarChart(props){
     // });
     return (
         <div className="chart">
-        <Bar
-    data={props.chartData}
-    options={{
-        title:{
-            display:"Bar",
-                text:'Building Probability ',
-                fontSize:25
-        },
-        type:"horizontalBar"
+        <HorizontalBar
+            type="horizontalBar"
+            data={props.chartData}
+            options={{
+            title:{
+                display:"Bar",
+                    text:'Building Probability ',
+                    fontSize:25
+            },
+
     }}
     />
 </div>

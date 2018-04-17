@@ -3,4 +3,4 @@ python retrain.py --image_dir ./building_photos
 
 Tensorboard:
 cd C:\sudiaoapp\ml_ws\
-tensorboard --logdir ./model/retrain_logs --host=127.0.0.1
+tensorboard --logdir ../model/retrain_logs --host=127.0.0.1
