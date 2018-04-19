@@ -1,15 +1,11 @@
 import React from 'react';
-import ReactDOMServer from 'react-dom/server';
 import './css/foundation.css';
 import './css/app.css';
 import '../../node_modules/react-dropzone-component/styles/filepicker.css'
 import '../../node_modules/dropzone/dist/min/dropzone.min.css'
-import Dropzone from 'react-dropzone';
-import {query_building_file, capitalize} from '../api/Api'
+import {query_building_file} from '../api/Api'
 import Result from './Result';
 import ErrorMessage from './ErrorMessage'
-import ReactDOM from 'react-dom';
-// import DropzoneComponent from 'react-dropzone-component';
 import DropzoneComponent from './DropzoneComponent';
 
 class Fileform extends React.Component {
@@ -40,7 +36,6 @@ class Fileform extends React.Component {
       this.callbackArray = [() => console.log('Hi!'), () => console.log('Ho!')];
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFileRemoved=this.handleFileRemoved.bind(this);
-      // this.handleFileAdded = this.handleFileAdded.bind(this);
   }
 
     handleFileAdded(file) {
@@ -102,7 +97,6 @@ async handleSubmit(event) {
                 place_id:res[key].place_id
             }
             resultList[res[key].label]=detail;
-            // result.push(res[key].label + " " + res[key].probability);
             labels.push(res[key].label);
             probability.push(res[key].probability);
         })
@@ -151,6 +145,12 @@ async handleSubmit(event) {
           <button className="btn btn-outline-primary" type="submit">Analysis</button>
       );
 
+      const result = this.state.isLoading ? (
+          <div/>
+      ) : (
+          <Result resultList={this.state.resultList} chartData={this.state.chartData} uri={false} />
+      );
+
       const config = this.componentConfig;
       const djsConfig = this.djsConfig;
 
@@ -172,18 +172,6 @@ async handleSubmit(event) {
                           <DropzoneComponent className="fileDropZone" config={config}
                                              eventHandlers={eventHandlers}
                                              djsConfig={djsConfig} />
-                          {/*<div className="dropzone">*/}
-                              {/*<Dropzone onDrop={this.onDrop.bind(this)}>*/}
-                                  {/*<p>Try dropping some files here, or click to select files to upload.</p>*/}
-                              {/*</Dropzone>*/}
-                              {/*Dropped files*/}
-                              {/*<div className="spacerSmall"/>*/}
-                              {/*<ul className="list-group">*/}
-                                  {/*{*/}
-                                      {/*this.state.files.map(f => <li className="list-group-item" key={f.name}>{f.name} - {f.size} bytes</li>)*/}
-                                  {/*}*/}
-                              {/*</ul>*/}
-                          {/*</div>*/}
                           <div className="spacerSmall"/>
                           <div>
                               {button}
@@ -196,7 +184,7 @@ async handleSubmit(event) {
             </div>
             <div className="row justify-content-center" >
               <div className="col-8" >
-                 <Result resultList={this.state.resultList} chartData={this.state.chartData} uri={false} />
+                  {result}
               </div>
             </div>
           </div>

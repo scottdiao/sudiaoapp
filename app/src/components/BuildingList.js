@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {capitalize, query_building_list} from '../api/Api'
-import { Link } from 'react-router-dom'
 
 class BuildingList extends Component {
     constructor(){

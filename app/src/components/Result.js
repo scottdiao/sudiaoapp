@@ -17,7 +17,6 @@ class Result extends Component {
                 pie: "pills-pie"
             }
         }
-        this.handleClick = this.handleClick.bind(this);
     }
 
 
@@ -33,48 +32,6 @@ class Result extends Component {
             }
         });
     }
-
-    handleClick(){
-        console.log("clicked bar")
-        console.log(this.state.chartData.labels[0])
-    //     const chartData = this.state.chartData;
-    //     this.setState({
-    //         chartData:{
-    //             labels: ['Boston', 'Worcester', 'Springfield', 'Lowell', 'Cambridge', 'New Bedford'],
-    //             datasets:[
-    //                 {
-    //                     label:'Population',
-    //                     data:[
-    //                         617594,
-    //                         181045,
-    //                         153060,
-    //                         106519,
-    //                         105162,
-    //                         95072
-    //                     ],
-    //                     backgroundColor:[
-    //                         'rgba(255, 99, 132, 0.6)',
-    //                         'rgba(54, 162, 235, 0.6)',
-    //                         'rgba(255, 206, 86, 0.6)',
-    //                         'rgba(75, 192, 192, 0.6)',
-    //                         'rgba(153, 102, 255, 0.6)',
-    //                         'rgba(255, 159, 64, 0.6)',
-    //                         'rgba(255, 99, 132, 0.6)'
-    //                     ]
-    //                 }
-    //             ]
-    //         }
-    //     });
-    //     console.log("chartdata"+this.state.chartData.labels[0])
-    //     // this.state = {
-    //     //     chartData:chartData
-    //     //     // showBar: true
-    //     // }
-    //
-    //   console.log("show bar"+this.state.showBar)
-    }
-
-
 
     render() {
         if(Object.keys(this.state.chartData).length === 0 || Object.keys(this.state.chartData.datasets).length === 0) {

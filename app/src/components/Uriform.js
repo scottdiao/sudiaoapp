@@ -93,6 +93,12 @@ async handleSubmit(event) {
           <button className="btn btn-outline-primary" type="submit">Analysis</button>
       );
 
+      const result = this.state.isLoading ? (
+          <div/>
+      ) : (
+          <Result resultList={this.state.resultList} chartData={this.state.chartData} uri={true} />
+      );
+
       return <div>
           <ErrorMessage error={this.state.error} />
           <div className="row justify-content-center" >
@@ -108,7 +114,7 @@ async handleSubmit(event) {
           </div>
           <div className="row justify-content-center" >
               <div className="col-8" >
-                  <Result resultList={this.state.resultList} chartData={this.state.chartData} uri={true} />
+                  {result}
               </div>
           </div>
         </div>

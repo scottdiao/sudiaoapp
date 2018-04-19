@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Fileform from './Fileform';
 import Uriform from './Uriform';
-import App from "./App";
 
 class Main extends Component{
     render(){
@@ -21,8 +20,8 @@ class Main extends Component{
                     </ul>
                 </div>
             </div>
-            <div className="row" >
-                <div className="col" align="center">
+            <div className="row justify-content-center" >
+                <div className="col-11" align="center">
                     <div className="spacer"/>
                     <div className="tab-content" id="myTabContent">
                         <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"><Fileform /></div>

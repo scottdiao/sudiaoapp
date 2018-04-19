@@ -7,7 +7,6 @@ import Introduction from './Introduction'
 import BuildingList from './BuildingList'
 import Header from './Header'
 import Main from './Main'
-import {query_building_list} from "../api/Api";
 
 
 

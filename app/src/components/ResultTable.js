@@ -64,9 +64,6 @@ class ResultTable extends Component {
         const tableRow = rows.map((row) =>
             <tr>
                 <td data-toggle="modal" data-target="#tableModal" ><a id={row.id} href='#' onClick={this.handleClick}>{capitalize(row.label)}</a></td>
-                {/*<td id={row.id} data-toggle="modal" data-target="#tableModal" >*/}
-                    {/*<button type="button" onClick={this.handleClick} className="btn btn-outline-secondary">{capitalize(row.label)}</button>*/}
-                {/*</td>*/}
                 <td>{row.probability}</td>
             </tr>
         )
