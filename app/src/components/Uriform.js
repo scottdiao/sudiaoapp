@@ -100,9 +100,10 @@ async handleSubmit(event) {
       );
 
       return <div>
-          <ErrorMessage error={this.state.error} />
-          <div className="row justify-content-center" >
-              <div className="col-8" >
+              <div className="col-8 align-self-center" align="center">
+                <ErrorMessage error={this.state.error} />
+              </div>
+              <div className="col-8 align-self-center" >
                   <form onSubmit={this.handleSubmit.bind(this)}>
                       Image URI: <input type="text" name="imageuri"/>
                       <div>
@@ -111,12 +112,11 @@ async handleSubmit(event) {
                       <div className="small-spacer"/>
                   </form>
               </div>
-          </div>
-          <div className="row justify-content-center" >
-              <div className="col-8" >
+          
+          
+              <div className="col-8 align-self-center" >
                   {result}
               </div>
-          </div>
         </div>
       }
 
