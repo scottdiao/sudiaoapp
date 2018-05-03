@@ -3,8 +3,6 @@
 /ml_ws/env/
 /ml_ws/model/
 /ml_ws/legacy_model/
-
-/ms_ws/download.jpg
 /ml_ws/__pycache__/
 /ml_ws/test_image/
 /app/.idea/

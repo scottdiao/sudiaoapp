@@ -58,7 +58,7 @@ def upload():
 
 @app.route('/building_list')
 def list():
-    ds = datastore.Client()
+    ds = datastore.Client('atomic-amulet-199016')
     buildings = dsa.list_buildings(ds)
     resjsonlist = []
     for b in buildings:

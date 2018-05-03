@@ -99,7 +99,7 @@ def run_cnn(file_name):
 
     top_k = results.argsort()[-5:][::-1]
     labels = load_labels(label_file)
-    ds = datastore.Client()
+    ds = datastore.Client('atomic-amulet-199016')
     resjsonlist = []
     for i in top_k:
         entity = dsa.load_building(ds, labels[i])

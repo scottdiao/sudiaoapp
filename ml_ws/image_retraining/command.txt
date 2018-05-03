@@ -1,5 +1,6 @@
 Retrain script:
 python retrain.py --image_dir ./building_photos
+sudo python3 retrain.py --image_dir ./building_photos
 
 Tensorboard:
 cd C:\sudiaoapp\ml_ws\

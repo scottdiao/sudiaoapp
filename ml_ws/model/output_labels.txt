@@ -1,41 +1,78 @@
+20 fenchurch street
 30 st mary axe
+432 park avenue
+abenobashi terminal building
+abraj al bait
 acropolis of athens
 angkor wat
+apple park
 arc de triomphe
 atomium
+bank of china tower
+beijing national aquatics center
+beijing national stadium
 big ben
+buckingham palace
 burj al arab
 burj khalifa
+citic plaza
 canton tower
 capital gate
+casa batll 
+casa milo 
+cathedral of bras lia
+cha teau frontenac
+chrysler building
 cologne cathedral
 colosseum
+commerzbank tower
 eiffel tower
 empire state building
+fallingwater
+federation tower
 flatiron building
 forbidden city
+gateway arch
 giza pyramid complex
 golden gate bridge
 great mosque of mecca
 great wall of china
+guangzhou ctf finance centre
+guangzhou international finance center
 hagia sophia
 hassan ii mosque
 headquarters of the united nations
 himeji castle
 independence hall
+itsukushima shrine
+kk100
 kinkaku ji
 krak des chevaliers
+lakhta center
 leaning tower of pisa
+lloyd s building
 london bridge
+lotte world tower
+lotus temple
+mehrangarh
+mercury city tower
+milad tower
+millennium dome
 moscow kremlin
+national september 11 memorial museum
 neuschwanstein castle
 notro dame de paries
+one world trade center
 palace of westminster
 petronas towers
 radcliffe camera
 ryugyong hotel
+sacre c ur
+seattle central library
 shanghai tower
+shun hing square
 shwedagon pagoda
+smith tower
 solomon r guggenheim museum
 space needle
 statue of liberty
@@ -49,5 +86,24 @@ the interlace
 the louvre
 the pentagon
 the potala palace
+tokyo tower
+tour first 
 transamerica pyramid
+trump international hotel and tower chicago 
+villa savoye
+westin peachtree plaza hotel
+willis tower
 windsor castle
+yokohama landmark tower
+city of capitals
+cn tower
+dome of the rock
+evolution tower
+e lysc e palace
+international commerce centre
+messeturm
+ping an finance centre
+st paul s cathedral
+the shard 
+white house
+zifeng tower

@@ -20,18 +20,18 @@ export function Modal(props) {
                         <div className="modal-body">
                             {props.name}<br/>
                             {props.alias}
-                            <div className="row ">
-                                <div className="col" align="center">
-                                    <iframe width="300" height="300" frameBorder="0" style={{border: 1}}
-                                            src={props.mapsrc} allowFullScreen>
-                                    </iframe>
-                                </div>
+         
+                            <div className="col align-self-center" align="center">
+                                <iframe width="300" height="300" frameBorder="0" style={{border: 1}}
+                                        src={props.mapsrc} allowFullScreen>
+                                </iframe>
                             </div>
-                            <div className="row ">
-                                <div className="col" align="center">
-                                    <a href={wikiLink} target="_blank">Wiki Link</a>
-                                </div>
+
+
+                            <div className="col align-self-center" align="center">
+                                <a href={wikiLink} target="_blank">Wiki Link</a>
                             </div>
+
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
