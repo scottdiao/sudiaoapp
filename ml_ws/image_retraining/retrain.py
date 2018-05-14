@@ -178,7 +178,7 @@ def create_image_lists(image_dir, testing_percentage, validation_percentage):
     dir_name = os.path.basename(sub_dir)
     if dir_name == image_dir:
       continue
-    tf.logging.info("Looking for images in '" + dir_name + "'")
+    # tf.logging.info("Looking for images in '" + dir_name + "'")
     for extension in extensions:
       file_glob = os.path.join(image_dir, dir_name, '*.' + extension)
       file_list.extend(tf.gfile.Glob(file_glob))
@@ -329,6 +329,7 @@ def run_bottleneck_on_image(sess, image_data, image_data_tensor,
   # First decode the JPEG image, resize it, and rescale the pixel values.
   resized_input_values = sess.run(decoded_image_tensor,
                                   {image_data_tensor: image_data})
+  print("resize input shape"+str(resized_input_values.shape))
   # Then run it through the recognition network.
   bottleneck_values = sess.run(bottleneck_tensor,
                                {resized_input_tensor: resized_input_values})
@@ -525,6 +526,7 @@ def get_random_cached_bottlenecks(sess, image_lists, how_many, category,
       filenames.append(image_name)
   else:
     # Retrieve all bottlenecks.
+    print("image_list keys size"+str(len(image_lists.keys())))
     for label_index, label_name in enumerate(image_lists.keys()):
       for image_index, image_name in enumerate(
           image_lists[label_name][category]):
@@ -752,11 +754,17 @@ def add_final_retrain_ops(class_count, final_tensor_name, bottleneck_tensor,
         tf.int64, [batch_size], name='GroundTruthInput')
 
   # Organizing the following ops so they are easier to see in TensorBoard.
+  layer_name = 'final_fc_ops'
+  with tf.name_scope(layer_name):
+    fc_input=tf.contrib.layers.fully_connected(bottleneck_input, 200)
+    variable_summaries(fc_input)
+
+
   layer_name = 'final_retrain_ops'
   with tf.name_scope(layer_name):
     with tf.name_scope('weights'):
       initial_value = tf.truncated_normal(
-          [bottleneck_tensor_size, class_count], stddev=0.001)
+          [200, class_count], stddev=0.001)
       layer_weights = tf.Variable(initial_value, name='final_weights')
       variable_summaries(layer_weights)
 
@@ -765,7 +773,7 @@ def add_final_retrain_ops(class_count, final_tensor_name, bottleneck_tensor,
       variable_summaries(layer_biases)
 
     with tf.name_scope('Wx_plus_b'):
-      logits = tf.matmul(bottleneck_input, layer_weights) + layer_biases
+      logits = tf.matmul(fc_input, layer_weights) + layer_biases
       tf.summary.histogram('pre_activations', logits)
 
   final_tensor = tf.nn.softmax(logits, name=final_tensor_name)
@@ -845,21 +853,61 @@ def run_final_eval(sess, module_spec, class_count, image_lists,
                                     FLAGS.image_dir, jpeg_data_tensor,
                                     decoded_image_tensor, resized_image_tensor,
                                     bottleneck_tensor, FLAGS.tfhub_module))
+  train_bottlenecks, train_ground_truth, train_filenames = (
+      get_random_cached_bottlenecks(sess, image_lists, -1,
+                                    'training', FLAGS.bottleneck_dir,
+                                    FLAGS.image_dir, jpeg_data_tensor,
+                                    decoded_image_tensor, resized_image_tensor,
+                                    bottleneck_tensor, FLAGS.tfhub_module))
+  valid_bottlenecks, valid_ground_truth, valid_filenames = (
+      get_random_cached_bottlenecks(sess, image_lists, -1,
+                                    'validation', FLAGS.bottleneck_dir,
+                                    FLAGS.image_dir, jpeg_data_tensor,
+                                    decoded_image_tensor, resized_image_tensor,
+                                    bottleneck_tensor, FLAGS.tfhub_module))
   test_accuracy, predictions = sess.run(
       [evaluation_step, prediction],
       feed_dict={
           bottleneck_input: test_bottlenecks,
           ground_truth_input: test_ground_truth
       })
+  train_accuracy, train_predictions = sess.run(
+      [evaluation_step, prediction],
+      feed_dict={
+          bottleneck_input: train_bottlenecks,
+          ground_truth_input: train_ground_truth
+      })
+  valid_accuracy, valid_predictions = sess.run(
+      [evaluation_step, prediction],
+      feed_dict={
+          bottleneck_input: valid_bottlenecks,
+          ground_truth_input: valid_ground_truth
+      })
   tf.logging.info('Final test accuracy = %.1f%% (N=%d)' %
                   (test_accuracy * 100, len(test_bottlenecks)))
+  tf.logging.info('Final train accuracy = %.1f%% (N=%d)' %
+                  (train_accuracy * 100, len(train_bottlenecks)))
+  tf.logging.info('Final valid accuracy = %.1f%% (N=%d)' %
+                  (valid_accuracy * 100, len(valid_bottlenecks)))
 
   if FLAGS.print_misclassified_test_images:
     tf.logging.info('=== MISCLASSIFIED TEST IMAGES ===')
+    print("test_filenames size"+str(len(test_filenames)))
     for i, test_filename in enumerate(test_filenames):
       if predictions[i] != test_ground_truth[i]:
         tf.logging.info('%70s  %s' % (test_filename,
                                       list(image_lists.keys())[predictions[i]]))
+    tf.logging.info('=== MISCLASSIFIED TRAIN IMAGES ===')
+    for i, train_filename in enumerate(train_filenames):
+      if train_predictions[i] != train_ground_truth[i]:
+        tf.logging.info('%70s  %s' % (train_filename,
+                                      list(image_lists.keys())[train_predictions[i]]))
+    tf.logging.info('=== MISCLASSIFIED VALID IMAGES ===')
+    for i, valid_filename in enumerate(valid_filenames):
+      if valid_predictions[i] != valid_ground_truth[i]:
+        tf.logging.info('%70s  %s' % (valid_filename,
+                                      list(image_lists.keys())[valid_predictions[i]]))
+
 
 
 def build_eval_session(module_spec, class_count):
@@ -1014,9 +1062,9 @@ def main(_):
 
   # Set up the pre-trained graph.
   module_spec = hub.load_module_spec(FLAGS.tfhub_module)
+  print ("module_spec"+str(module_spec))
   graph, bottleneck_tensor, resized_image_tensor, wants_quantization = (
       create_module_graph(module_spec))
-
   # Add the new layer that we'll be training.
   with graph.as_default():
     (train_step, cross_entropy, bottleneck_input,
@@ -1029,7 +1077,6 @@ def main(_):
     # and for the newly added retraining layer to random initial values.
     init = tf.global_variables_initializer()
     sess.run(init)
-
     # Set up the image decoding sub-graph.
     jpeg_data_tensor, decoded_image_tensor = add_jpeg_decoding(module_spec)
 
@@ -1049,7 +1096,6 @@ def main(_):
 
     # Create the operations we need to evaluate the accuracy of our new layer.
     evaluation_step, _ = add_evaluation_step(final_tensor, ground_truth_input)
-
     # Merge all the summaries and write them out to the summaries_dir
     merged = tf.summary.merge_all()
     train_writer = tf.summary.FileWriter(FLAGS.summaries_dir + '/train',
@@ -1086,7 +1132,6 @@ def main(_):
           feed_dict={bottleneck_input: train_bottlenecks,
                      ground_truth_input: train_ground_truth})
       train_writer.add_summary(train_summary, i)
-
       # Every so often, print out how well the graph is training.
       is_last_step = (i + 1 == FLAGS.how_many_training_steps)
       if (i % FLAGS.eval_step_interval) == 0 or is_last_step:
