@@ -11,6 +11,8 @@ img_width, img_height = 299, 299
 train_data_dir = 'building_photos/train'
 validation_data_dir = 'building_photos/validation'
 test_data_dir = 'building_photos/test'
+class_counts = len(os.listdir("./building_photos/train"))
+print("class_counts: "+str(class_counts))
 nb_train_samples = sum([len(files) for r, d, files in os.walk("./building_photos/train")])
 nb_validation_samples = sum([len(files) for r, d, files in os.walk("./building_photos/validation")])
 nb_test_samples = sum([len(files) for r, d, files in os.walk("./building_photos/test")])
@@ -19,7 +21,7 @@ print("nb_validation_samples: "+str(nb_validation_samples))
 print("nb_test_samples: "+str(nb_test_samples))
 
 
-epochs = 5
+epochs = 1
 batch_size = 10
 
 if K.image_data_format() == 'channels_first':
@@ -34,7 +36,7 @@ x = GlobalAveragePooling2D()(x)
 # let's add a fully-connected layer
 x = Dense(1024, activation='relu')(x)
 # and a logistic layer -- let's say we have 200 classes
-predictions = Dense(3, activation='softmax')(x)
+predictions = Dense(class_counts, activation='softmax')(x)
 
 # this is the augmentation configuration we will use for training
 model = Model(inputs=base_model.input, outputs=predictions)
@@ -53,7 +55,7 @@ train_datagen = ImageDataGenerator(
 # this is the augmentation configuration we will use for testing:
 # only rescaling
 test_datagen = ImageDataGenerator(rescale=1. / 255)
-predict_datagen = ImageDataGenerator()
+predict_datagen = ImageDataGenerator(rescale=1. / 255)
 
 train_generator = train_datagen.flow_from_directory(
     train_data_dir,
@@ -79,7 +81,7 @@ model.fit_generator(
     epochs=epochs,
     validation_data=validation_generator,
     validation_steps=nb_validation_samples // batch_size)
-model.save_weights('inception_v3.h5')
+
 
 
 print("*********************prediction_file_names*********************")
@@ -91,7 +93,7 @@ print(prediction_generator.classes)
 prediction = model.predict_generator(prediction_generator, verbose=1)
 print("*********************prediction*********************")
 print(prediction)
-
+model.save_weights('inception_v3.h5')
 
 correct_counts = 0
 

@@ -4,12 +4,13 @@ from keras.layers import Conv2D, MaxPooling2D
 from keras.layers import Activation, Dropout, Flatten, Dense
 from keras import backend as K
 import os, os.path
+import numpy as np
 
 img_width, img_height = 150, 150
 
 train_data_dir = 'building_photos/train'
 validation_data_dir = 'building_photos/validation'
-test_data_dir = 'building_photos/test'
+test_data_dir = 'building_photos/validation'
 nb_train_samples = sum([len(files) for r, d, files in os.walk("./building_photos/train")])
 nb_validation_samples = sum([len(files) for r, d, files in os.walk("./building_photos/validation")])
 nb_test_samples = sum([len(files) for r, d, files in os.walk("./building_photos/test")])
@@ -101,3 +102,15 @@ prediction[prediction >= 0.5] = 1
 prediction[prediction < 0.5] = 0
 print("*********************prediction after threshold*********************")
 print(prediction)
+
+correct_counts = 0
+
+for index, i in enumerate(prediction):
+    class_index = index//10
+    if np.argmax(i)==class_index:
+        correct_counts+=1
+        print("class: "+str(class_index)+" index: "+str(index)+": is corrected")
+    else:
+        print("class: "+str(class_index)+" index: "+str(index)+": is wrong")
+print("correct counts: "+str(correct_counts)+"  total: "+str(nb_test_samples))
+print("final test accuracy: "+str(correct_counts/nb_test_samples))
