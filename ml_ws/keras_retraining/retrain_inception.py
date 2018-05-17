@@ -3,6 +3,7 @@ from keras.models import Sequential, Model
 from keras.layers import Conv2D, MaxPooling2D, Activation, Dropout, Flatten, Dense, GlobalAveragePooling2D
 from keras import backend as K
 from keras import applications
+from keras.optimizers import SGD
 import os, os.path
 import numpy as np
 
@@ -43,6 +44,8 @@ model = Model(inputs=base_model.input, outputs=predictions)
 
 # first: train only the top layers (which were randomly initialized)
 # i.e. freeze all convolutional InceptionV3 layers
+# print("layer number "+ str(len(base_model.layers)))
+# print(str(base_model.layers))
 for layer in base_model.layers:
     layer.trainable = False
 
@@ -67,7 +70,7 @@ validation_generator = test_datagen.flow_from_directory(
     target_size=(img_width, img_height),
     batch_size=batch_size)
 print("*********************vaidation_file_names*********************")
-print(validation_generator.filenames)
+# print(validation_generator.filenames)
 
 prediction_generator = predict_datagen.flow_from_directory(
     test_data_dir,
@@ -82,10 +85,29 @@ model.fit_generator(
     validation_data=validation_generator,
     validation_steps=nb_validation_samples // batch_size)
 
+# Fine tuning
+for i, layer in enumerate(base_model.layers):
+   print(i, layer.name)
+
+# we chose to train the top 2 inception blocks, i.e. we will freeze
+# the first 249 layers and unfreeze the rest:
+for layer in model.layers[:249]:
+   layer.trainable = False
+for layer in model.layers[249:]:
+   layer.trainable = True
+model.compile(optimizer=SGD(lr=0.0001, momentum=0.9), loss='categorical_crossentropy')
+
+model.fit_generator(
+    train_generator,
+    steps_per_epoch=nb_train_samples // batch_size,
+    epochs=epochs,
+    validation_data=validation_generator,
+    validation_steps=nb_validation_samples // batch_size)
+
 
 
 print("*********************prediction_file_names*********************")
-print(prediction_generator.filenames)
+# print(prediction_generator.filenames)
 print("*********************prediction_class_indices*********************")
 print(prediction_generator.class_indices)
 print("*********************prediction_classes*********************")
