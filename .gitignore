@@ -9,3 +9,10 @@
 /ml_ws/test_image/
 /app/.idea/
 /npm-debug.log
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.npy
+*.h5
+*.pb

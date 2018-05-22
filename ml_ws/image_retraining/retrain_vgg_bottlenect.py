@@ -3,7 +3,7 @@ from keras.preprocessing.image import ImageDataGenerator
 from keras.models import Sequential
 from keras.layers import Dropout, Flatten, Dense, Activation
 from keras.utils.np_utils import to_categorical
-from keras import applications
+from keras import applications, optimizers
 import os, os.path
 
 # dimensions of our images.
@@ -16,6 +16,7 @@ test_data_dir = 'building_photos/test'
 train_data_dir = 'building_photos/train'
 validation_data_dir = 'building_photos/validation'
 test_data_dir = 'building_photos/test'
+class_counts = len(os.listdir("./building_photos/train"))
 nb_train_samples = sum([len(files) for r, d, files in os.walk("./building_photos/train")])
 nb_validation_samples = sum([len(files) for r, d, files in os.walk("./building_photos/validation")])
 nb_test_samples = sum([len(files) for r, d, files in os.walk("./building_photos/test")])
@@ -23,8 +24,8 @@ print("nb_train_samples: "+str(nb_train_samples))
 print("nb_validation_samples: "+str(nb_validation_samples))
 print("nb_test_samples: "+str(nb_test_samples))
 
-epochs = 20
-batch_size = 5
+epochs = 50
+batch_size = 100
 
 
 def save_bottlebeck_features():
@@ -41,7 +42,7 @@ def save_bottlebeck_features():
         shuffle=False)
     bottleneck_features_train = model.predict_generator(
         generator, nb_train_samples // batch_size)
-    np.save('bottleneck_features_train.npy',
+    np.save('vgg16_bottleneck_features_train.npy',
             bottleneck_features_train)
 
     generator = datagen.flow_from_directory(
@@ -52,7 +53,7 @@ def save_bottlebeck_features():
         shuffle=False)
     bottleneck_features_validation = model.predict_generator(
         generator, nb_validation_samples // batch_size)
-    np.save('bottleneck_features_validation.npy',
+    np.save('vgg16_bottleneck_features_validation.npy',
             bottleneck_features_validation)
 
     generator = datagen.flow_from_directory(
@@ -63,34 +64,68 @@ def save_bottlebeck_features():
         shuffle=False)
     bottleneck_features_test = model.predict_generator(
         generator, nb_test_samples // batch_size)
-    np.save('bottleneck_features_test.npy',
+    np.save('vgg16_bottleneck_features_test.npy',
             bottleneck_features_test)
 
 
 def train_top_model():
-    train_data = np.load('bottleneck_features_train.npy')
-    train_labels = np.array([0] * (nb_train_samples // 3) + [1] * (nb_train_samples // 3) + [2] * (nb_train_samples // 3))
+    train_data = np.load('vgg16_bottleneck_features_train.npy')
+    # train_labels = np.array([0] * (nb_train_samples // 3) + [1] * (nb_train_samples // 3) + [2] * (nb_train_samples // 3))
+    c = 0
+    for r, d, files in os.walk("./building_photos/train"):
+        if(len(files)!=0):
+            if c==0:
+                train_labels = np.array([0]*len(files))
+            else:
+                train_labels = np.concatenate((train_labels, np.array([c]*len(files))))
+            c+=1
+    print("train labels len")
+    print(len(train_labels))
+    # for c in range (0, class_counts):
+    #     train_labels = np.concatenate((train_labels, np.array([c]*(nb_train_samples // class_counts))))
+    # print(train_labels)
     train_labels = to_categorical(train_labels)
+    print("train labels one hot")
+    print(train_labels)
 
-    validation_data = np.load('bottleneck_features_validation.npy')
-    validation_labels = np.array([0] * (nb_validation_samples // 3) + [1] * (nb_validation_samples // 3) + [2] * (nb_validation_samples // 3))
+    validation_data = np.load('vgg16_bottleneck_features_validation.npy')
+    c=0
+    for r, d, files in os.walk("./building_photos/validation"):
+        if(len(files)!=0):
+            if c==0:
+                validation_labels = np.array([0]*len(files))
+            else:
+                validation_labels = np.concatenate((validation_labels, np.array([c]*len(files))))
+            c+=1
+
     validation_labels = to_categorical(validation_labels)
+    print("validation_labels one hot")
+    print(validation_labels)
+    print(len(validation_labels))
 
-    test_data = np.load('bottleneck_features_test.npy')
-    test_labels = np.array([0] * (nb_test_samples // 3) + [1] * (nb_test_samples // 3) + [2] * (nb_test_samples // 3))
+    test_data = np.load('vgg16_bottleneck_features_test.npy')
+    c=0
+    for r, d, files in os.walk("./building_photos/TEST"):
+        if(len(files)!=0):
+            if c==0:
+                test_labels = np.array([0]*len(files))
+            else:
+                test_labels = np.concatenate((test_labels, np.array([c]*len(files))))
+            c+=1
     test_labels = to_categorical(test_labels)
-    print("************train_data shape***************************")
-    print(train_data.shape)
-    print(train_data.shape[1:])
+    print("test_labels one hot")
+    print(test_labels)
+    print(len(test_labels))
 
     model = Sequential()
     model.add(Flatten(input_shape=train_data.shape[1:]))
-    model.add(Dense(256))
-    model.add(Activation('relu'))
-    model.add(Dense(3))
+    # model.add(Dense(256))
+    # model.add(Activation('relu'))
+    model.add(Dense(class_counts))
     model.add(Activation('softmax'))
 
-    model.compile(optimizer='rmsprop',
+    rms = optimizers.RMSprop()
+    model.compile(optimizer=rms,
                   loss='categorical_crossentropy', metrics=['accuracy'])
 
     model.fit(train_data, train_labels,
@@ -118,5 +153,5 @@ def train_top_model():
     print("correct counts: "+str(correct_counts)+"  total: "+str(nb_test_samples))
     print("final test accuracy: "+str(correct_counts/nb_test_samples))
 
-save_bottlebeck_features()
+# save_bottlebeck_features()
 train_top_model()

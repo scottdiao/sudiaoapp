@@ -4,6 +4,7 @@
 abenobashi terminal building
 abraj al bait
 acropolis of athens
+aldar headquarters building
 angkor wat
 apple park
 arc de triomphe
@@ -11,22 +12,24 @@ atomium
 bank of china tower
 beijing national aquatics center
 beijing national stadium
-big ben
 buckingham palace
 burj al arab
 burj khalifa
+cctv headquarters
 citic plaza
 canton tower
 capital gate
-casa batll 
-casa milo 
-cathedral of bras lia
-cha teau frontenac
+casa batllo
+casa mila
+cathedral of brasilia
+charminar
+chateau frontenac
 chrysler building
 cologne cathedral
 colosseum
 commerzbank tower
 eiffel tower
+elysee palace
 empire state building
 fallingwater
 federation tower
@@ -41,6 +44,7 @@ guangzhou ctf finance centre
 guangzhou international finance center
 hagia sophia
 hassan ii mosque
+hawa mahal
 headquarters of the united nations
 himeji castle
 independence hall
@@ -54,18 +58,23 @@ lloyd s building
 london bridge
 lotte world tower
 lotus temple
+marina bay sands
 mehrangarh
 mercury city tower
 milad tower
 millennium dome
 moscow kremlin
+mount rushmore national memorial
 national september 11 memorial museum
 neuschwanstein castle
 notro dame de paries
 one world trade center
+oriental pearl tower
 palace of westminster
 petronas towers
 radcliffe camera
+robie house
+ruins of st paul s
 ryugyong hotel
 sacre c ur
 seattle central library
@@ -75,22 +84,26 @@ shwedagon pagoda
 smith tower
 solomon r guggenheim museum
 space needle
+st peter s basilica
 statue of liberty
 stockholm city hall
 stonehenge
 sydney opera house
+sydney tower
 taipei 101
 taj mahal
+temple of heaven
 terracotta army
 the interlace
 the louvre
 the pentagon
 the potala palace
 tokyo tower
-tour first 
+tour first
 transamerica pyramid
 trump international hotel and tower chicago 
 villa savoye
+walt disney concert hall
 westin peachtree plaza hotel
 willis tower
 windsor castle
@@ -99,11 +112,12 @@ city of capitals
 cn tower
 dome of the rock
 evolution tower
-e lysc e palace
 international commerce centre
 messeturm
 ping an finance centre
 st paul s cathedral
-the shard 
+the shard
+united states capitol
+washington monument
 white house
 zifeng tower
