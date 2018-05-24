@@ -4,19 +4,24 @@ from __future__ import print_function
 from flask import Flask, jsonify, request
 from werkzeug import secure_filename
 import urllib.request
-import argparse
+from keras.models import load_model
+from keras.preprocessing import image
+from keras.applications.inception_v3 import preprocess_input
 from flask_cors import CORS
-import cnn
 import numpy as np
 import tensorflow as tf
-import os
-import uuid
+import os, pickle, uuid, argparse
 import datastore_api as dsa
 from google.cloud import datastore
 
 
 app = Flask(__name__)
 CORS(app)
+ds = datastore.Client('atomic-amulet-199016')
+model_dir = './keras_model/inception_v3.h5'
+model = load_model(model_dir)
+graph = tf.get_default_graph()
+
 
 @app.route('/')
 def index():
@@ -37,7 +42,7 @@ def building_uri():
     if not request.json or not 'uri' in request.json:
         abort(400)
     urllib.request.urlretrieve(request.json['uri'], encrypt_filename)
-    response = cnn.run_cnn("download.jpg")
+    response = run_keras_cnn(encrypt_filename)
     os.remove(encrypt_filename)
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
@@ -48,7 +53,7 @@ def building_file():
     uuid = request.form.get("uuid")
     file_name = "./uploads/"+uuid+secure_filename(f.filename)
     f.save(file_name)
-    response = cnn.run_cnn(file_name)
+    response = run_keras_cnn(file_name)
     os.remove(file_name)
     return response
 
@@ -69,9 +74,34 @@ def list():
     response =  jsonify(resjsonlist)
     return response
 
-
-
+def run_keras_cnn(file_name):
+    img_width, img_height = 299, 299
+    with open('./keras_model/class_dict.pkl', 'rb') as f:
+        class_dict = pickle.load(f)
+    x = image.load_img(file_name, target_size=(img_width, img_height))
+    x = np.expand_dims(x, axis=0)
+    x=x.astype("float32")
+    x.setflags(write=1)
+    x = preprocess_input(x)
+    global graph
+    with graph.as_default():
+        preds = model.predict(x)
+    preds = np.squeeze(preds)
+    resjsonlist = []
+    for i in top_k:
+        label = class_dict[i].lower()
+        entity = dsa.load_building(ds, label)
+        resjson = {
+            'label': label,
+            'alias': entity['alias'],
+            'place_id': entity['place_id'],
+            'probability': str(preds[i])
+        }
+        resjsonlist.append(resjson)
+        print(label, preds[i])
+    response =  jsonify(resjsonlist)
+    return response
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)

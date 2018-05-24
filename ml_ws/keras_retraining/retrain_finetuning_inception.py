@@ -1,18 +1,19 @@
 from keras.preprocessing.image import ImageDataGenerator
 from keras.models import Sequential, Model
-from keras.layers import Conv2D, GlobalMaxPooling2D, Activation, Dropout, Flatten, Dense, GlobalAveragePooling2D
+from keras.layers import Conv2D, Input, GlobalMaxPooling2D, Activation, Dropout, Flatten, Dense, GlobalAveragePooling2D
 from keras import backend as K
 from keras import applications, optimizers
 from keras.optimizers import SGD
 from keras.utils.np_utils import to_categorical
-import os, os.path
+import os, os.path, pickle
 import numpy as np
 
 img_width, img_height = 299, 299
 
-train_data_dir = 'building_photos/train_20'
-validation_data_dir = 'building_photos/train_20'
-test_data_dir = 'building_photos/train_20'
+model_dir = '../keras_model/inception_v3.h5'
+train_data_dir = 'building_photos/train'
+validation_data_dir = 'building_photos/validation'
+test_data_dir = 'building_photos/test'
 class_counts = len(os.listdir(train_data_dir))
 nb_train_samples = sum([len(files) for r, d, files in os.walk(train_data_dir)])
 nb_validation_samples = sum([len(files) for r, d, files in os.walk(validation_data_dir)])
@@ -21,51 +22,51 @@ print("nb_train_samples: "+str(nb_train_samples))
 print("nb_validation_samples: "+str(nb_validation_samples))
 print("nb_test_samples: "+str(nb_test_samples))
 
-epochs = 50
-batch_size = 10
+epochs = 5
+batch_size = 50
 
-if K.image_data_format() == 'channels_first':
-    input_shape = (3, img_width, img_height)
-else:
-    input_shape = (img_width, img_height, 3)
 
-base_model = applications.InceptionV3(weights='imagenet', include_top=False)
-# add a global spatial average pooling layer
-x = base_model.output
-x = GlobalMaxPooling2D()(x)
-# let's add a fully-connected layer
-x = Dense(1024, activation='relu')(x)
-# and a logistic layer -- let's say we have 200 classes
-predictions = Dense(class_counts, activation='softmax')(x)
-
-# this is the augmentation configuration we will use for training
-model = Model(inputs=base_model.input, outputs=predictions)
-
-# first: train only the top layers (which were randomly initialized)
-# i.e. freeze all convolutional InceptionV3 layers
-# print("layer number "+ str(len(base_model.layers)))
-# print(str(base_model.layers))
+input_tensor = Input(shape=(299,299,3))
+base_model = applications.InceptionV3(weights='imagenet', include_top=False, input_tensor=input_tensor)
 for layer in base_model.layers:
     layer.trainable = False
 
-sgd=optimizers.SGD()
-# compile the model (should be done *after* setting layers to non-trainable)
-model.compile(optimizer=sgd, loss='categorical_crossentropy', metrics=['categorical_accuracy'])
 
-datagen = ImageDataGenerator(rescale = 1. / 255)
+top_model = Sequential()
+top_model.add(Flatten(input_shape=base_model.output_shape[1:]))
+top_model.add(Dense(256, activation='relu'))
+top_model.add(Dense(class_counts, activation='softmax'))
+model = Model(input= base_model.input, output= top_model(base_model.output))
+
+opt=optimizers.SGD()
+# compile the model (should be done *after* setting layers to non-trainable)
+model.compile(optimizer=opt, loss='categorical_crossentropy', metrics=['categorical_accuracy'])
+
+train_datagen = ImageDataGenerator(rescale=1./255)
+
+# Data Augumation
+# train_datagen = ImageDataGenerator(
+#         rescale=1./255,
+#         shear_range=0.2,
+#         zoom_range=0.2,
+#         horizontal_flip=True)
 validation_datagen = ImageDataGenerator(rescale=1. / 255)
 predict_datagen = ImageDataGenerator(rescale=1. / 255)
 
-train_generator = datagen.flow_from_directory(
+train_generator = train_datagen.flow_from_directory(
     train_data_dir,
     target_size=(img_width, img_height),
     batch_size=batch_size,
     class_mode='categorical')
-validation_generator = datagen.flow_from_directory(
+validation_generator = validation_datagen.flow_from_directory(
     validation_data_dir,
     target_size=(img_width, img_height),
     batch_size=batch_size,
     class_mode='categorical')
+class_dict = {v: k for k, v in train_generator.class_indices.items()}
+with open('../keras_model/class_dict.pkl', 'wb') as f:
+    pickle.dump(class_dict, f, pickle.HIGHEST_PROTOCOL)
+print("saved class_indices")
 # print("*********************validation_generator*********************")
 # print(str(validation_generator.class_indices).encode('utf-8'))
 # print(str(validation_generator.classes).encode('utf-8'))
@@ -83,16 +84,31 @@ model.fit_generator(
     train_generator,
     steps_per_epoch=nb_train_samples // batch_size,
     epochs=epochs,
-    validation_data=train_generator,
-    validation_steps=nb_train_samples // batch_size
+    validation_data=validation_generator,
+    validation_steps=nb_validation_samples // batch_size
 )
+
+print("**************fine tuning******************************")
+for layer in model.layers[:249]:
+   layer.trainable = False
+for layer in model.layers[249:]:
+   layer.trainable = True
+model.compile(optimizer=SGD(lr=0.0001, momentum=0.9), loss='categorical_crossentropy', metrics=['categorical_accuracy'])
+model.fit_generator(
+    train_generator,
+    steps_per_epoch=nb_train_samples // batch_size,
+    epochs=epochs,
+    validation_data=validation_generator,
+    validation_steps=nb_validation_samples // batch_size
+)
+
 
 print("*********************prediction_class_indices*********************")
 print(prediction_generator.class_indices)
 print("*********************prediction_classes*********************")
 print(prediction_generator.classes)
 test_prediction = model.predict_generator(prediction_generator, verbose=1)
-model.save_weights('inception_v3.h5')
+model.save(model_dir)
 
 correct_counts = 0
 c=0

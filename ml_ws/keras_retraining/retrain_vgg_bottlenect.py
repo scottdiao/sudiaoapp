@@ -10,9 +10,9 @@ import os, os.path
 img_width, img_height = 150, 150
 
 top_model_weights_path = 'bottleneck_fc_model.h5'
-train_data_dir = 'building_photos/train'
-validation_data_dir = 'building_photos/validation'
-test_data_dir = 'building_photos/test'
+train_data_dir = 'building_photos/train_20'
+validation_data_dir = 'building_photos/train_20'
+test_data_dir = 'building_photos/train_20'
 class_counts = len(os.listdir(train_data_dir))
 nb_train_samples = sum([len(files) for r, d, files in os.walk(train_data_dir)])
 nb_validation_samples = sum([len(files) for r, d, files in os.walk(validation_data_dir)])
@@ -21,7 +21,7 @@ print("nb_train_samples: "+str(nb_train_samples))
 print("nb_validation_samples: "+str(nb_validation_samples))
 print("nb_test_samples: "+str(nb_test_samples))
 
-epochs = 40
+epochs = 100
 batch_size = 40
 
 def save_bottlebeck_features():
@@ -38,9 +38,9 @@ def save_bottlebeck_features():
         shuffle=False)
     bottleneck_features_train = model.predict_generator(
         generator, nb_train_samples)
-    print("*************train file names***************")
+    print("*************class_indices***************")
     print(str(generator.class_indices).encode('utf-8'))
-    # print(str(generator.filenames).encode('utf-8'))
+
     train_filenames = np.asarray(generator.filenames)
     np.save('./bottleneck/vgg16_bottleneck_features_train.npy',
             bottleneck_features_train)
@@ -51,7 +51,6 @@ def save_bottlebeck_features():
         batch_size=1,
         class_mode=None,
         shuffle=False)
-    print(str(generator.class_indices).encode('utf-8'))
     validation_filenames = np.asarray(generator.filenames)
     bottleneck_features_validation = model.predict_generator(
         generator, nb_validation_samples)
@@ -82,10 +81,8 @@ def train_top_model(train_filenames, validation_filenames):
             else:
                 train_labels = np.concatenate((train_labels, np.array([c]*len(files))))
             c+=1
-    print("train labels len")
-    print(len(train_labels))
     train_labels = to_categorical(train_labels)
-    print(train_labels)
+
 
     validation_data = np.load('./bottleneck/vgg16_bottleneck_features_validation.npy')
     c=0
@@ -98,8 +95,6 @@ def train_top_model(train_filenames, validation_filenames):
             c+=1
 
     validation_labels = to_categorical(validation_labels)
-    print(validation_labels)
-    print(len(validation_labels))
 
     test_data = np.load('./bottleneck/vgg16_bottleneck_features_test.npy')
     c=0
@@ -111,15 +106,12 @@ def train_top_model(train_filenames, validation_filenames):
                 test_labels = np.concatenate((test_labels, np.array([c]*len(files))))
             c+=1
     test_labels = to_categorical(test_labels)
-    print(test_labels)
-    print(len(test_labels))
 
     model = Sequential()
     model.add(Flatten(input_shape=train_data.shape[1:]))
-    model.add(Dense(256))
-    model.add(Activation('relu'))
-    model.add(Dense(class_counts))
-    model.add(Activation('softmax'))
+    model.add(Dense(256, activation='relu'))
+    model.add(Dropout(0.5))
+    model.add(Dense(class_counts, activation='softmax'))
 
     rms = optimizers.RMSprop()
     model.compile(optimizer='sgd',
@@ -169,7 +161,7 @@ def train_top_model(train_filenames, validation_filenames):
         else:
             if index >= len(validation_filenames):
                 break
-            print(" index: "+str(index)+"  "+str(str(validation_filenames[index]).encode('utf-8'))+"perdiction: "+str(np.argmax(i))+" label: "+str(np.argmax(validation_labels[index])))
+            # print(" index: "+str(index)+"  "+str(str(validation_filenames[index]).encode('utf-8'))+"perdiction: "+str(np.argmax(i))+" label: "+str(np.argmax(validation_labels[index])))
             print("is wrong")
 
     print("correct validation counts: "+str(correct_counts)+"  total: "+str(nb_validation_samples))
@@ -181,9 +173,9 @@ def train_top_model(train_filenames, validation_filenames):
         class_index = index//10
         if np.argmax(i)==class_index:
             correct_counts+=1
-            print("class: "+str(class_index)+" index: "+str(index)+": is corrected")
-        else:
-            print("class: "+str(class_index)+" index: "+str(index)+": is wrong")
+            # print("class: "+str(class_index)+" index: "+str(index)+": is corrected")
+        # else:
+            # print("class: "+str(class_index)+" index: "+str(index)+": is wrong")
     print("correct counts: "+str(correct_counts)+"  total: "+str(nb_test_samples))
     print("final test accuracy: "+str(correct_counts/nb_test_samples))
 
