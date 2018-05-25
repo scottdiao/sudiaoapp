@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {capitalize, query_building_list} from '../api/Api'
+import ReactTable from "react-table";
+import "react-table/react-table.css";
 
 class BuildingList extends Component {
     constructor(){
@@ -28,6 +30,7 @@ class BuildingList extends Component {
         res.map((building)=>{
             list.push(building.name)
         })
+
         console.log(JSON.stringify(list))
         this.setState({buildingList:list})
     }
@@ -35,7 +38,11 @@ class BuildingList extends Component {
 
     render() {
         const list = this.state.buildingList
-        const number = list.length;
+        console.log(list)
+        const data = {
+          name:list
+        }
+        // const number = list.length;
 
         const loading = this.state.isLoading ? (
             <div>
@@ -48,34 +55,36 @@ class BuildingList extends Component {
                 </div>
             </div>
         ) : (
-            <div align="center"><h5>Total {number} Buildings</h5></div>
+            <div>dsfsdfd</div>
+            // <div align="center"><h5>Total {number} Buildings</h5></div>
         );
 
 
-        const tableRow = list.map((row) =>
-            <tr>
-                <td >{capitalize(row)}</td>
-            </tr>
-        )
+        // const tableRow = list.map((row) =>
+        //     <tr>
+        //         <td >{capitalize(row)}</td>
+        //     </tr>
+        // )
 
 
         return (
             <div>
-                <div className="row">
-                    <div className="col" align="center">
-                        {loading}
-                    </div>
-                </div>
-                <div className="row justify-content-center">
-                    <div className="col-6" align="center">
+              <ReactTable
+                data={data}
+                columns={[
+                  {
+                    Header: "Info",
+                    columns: [
+                      {
+                        Header: "Name"
+                      }
+                    ]
+                  }
+                ]}
+                defaultPageSize={10}
+                className="-striped -highlight"
+              />
 
-                        <table className="table table-striped">
-                            <tbody>
-                            {tableRow}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
             </div>
         )
     }

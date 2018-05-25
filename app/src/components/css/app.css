@@ -18,6 +18,14 @@
     background-size: cover;
 }
 
+.App-footer {
+    /* Full height */
+    height: 200px;
+
+    /* Center and scale the image nicely */
+    background-color: #494949;
+}
+
 .App-title {
   font-size: 1.5em;
     color: #000000;
@@ -37,6 +45,18 @@
 }
 .spacerTiny {
     height:5px;
+}
+
+.radius{
+  border-radius:5px;
+}
+
+.radiusLarge{
+  border-radius:15px;
+}
+
+.shadow{
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
 }
 
 .fileDropZone {

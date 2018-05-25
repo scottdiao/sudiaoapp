@@ -21,7 +21,7 @@ print("nb_train_samples: "+str(nb_train_samples))
 print("nb_validation_samples: "+str(nb_validation_samples))
 print("nb_test_samples: "+str(nb_test_samples))
 
-epochs = 5
+epochs = 3
 batch_size = 40
 
 def save_bottlebeck_features():

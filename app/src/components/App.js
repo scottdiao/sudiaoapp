@@ -6,6 +6,7 @@ import { Switch, Route } from 'react-router-dom'
 import Introduction from './Introduction'
 import BuildingList from './BuildingList'
 import Header from './Header'
+import Footer from './Footer'
 import Main from './Main'
 
 
@@ -23,6 +24,7 @@ class App extends Component {
               <Route path='/list' component={BuildingList}/>
               <Route path='/' component={Main}/>
           </Switch>
+          <Footer />
       </div>
     );
   }

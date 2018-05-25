@@ -22,7 +22,7 @@ print("nb_train_samples: "+str(nb_train_samples))
 print("nb_validation_samples: "+str(nb_validation_samples))
 print("nb_test_samples: "+str(nb_test_samples))
 
-epochs = 5
+epochs = 3
 batch_size = 50
 
 
@@ -88,19 +88,19 @@ model.fit_generator(
     validation_steps=nb_validation_samples // batch_size
 )
 
-print("**************fine tuning******************************")
-for layer in model.layers[:249]:
-   layer.trainable = False
-for layer in model.layers[249:]:
-   layer.trainable = True
-model.compile(optimizer=SGD(lr=0.0001, momentum=0.9), loss='categorical_crossentropy', metrics=['categorical_accuracy'])
-model.fit_generator(
-    train_generator,
-    steps_per_epoch=nb_train_samples // batch_size,
-    epochs=epochs,
-    validation_data=validation_generator,
-    validation_steps=nb_validation_samples // batch_size
-)
+# print("**************fine tuning******************************")
+# for layer in model.layers[:249]:
+#    layer.trainable = False
+# for layer in model.layers[249:]:
+#    layer.trainable = True
+# model.compile(optimizer=SGD(lr=0.0001, momentum=0.9), loss='categorical_crossentropy', metrics=['categorical_accuracy'])
+# model.fit_generator(
+#     train_generator,
+#     steps_per_epoch=nb_train_samples // batch_size,
+#     epochs=epochs,
+#     validation_data=validation_generator,
+#     validation_steps=nb_validation_samples // batch_size
+# )
 
 
 print("*********************prediction_class_indices*********************")
