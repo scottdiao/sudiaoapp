@@ -87,6 +87,7 @@ def run_keras_cnn(file_name):
     with graph.as_default():
         preds = model.predict(x)
     preds = np.squeeze(preds)
+    top_k = preds.argsort()[-5:][::-1]
     resjsonlist = []
     for i in top_k:
         label = class_dict[i].lower()

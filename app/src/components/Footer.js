@@ -1,5 +1,7 @@
 import React from 'react'
 import blocks from './blocks.svg';
+import 'font-awesome/css/font-awesome.min.css';
+
 
 const Footer = () => (
   <footer class="page-footer font-small bg-light pt-4 mt-4 radiusLarge shadow">

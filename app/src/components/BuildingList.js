@@ -1,20 +1,19 @@
 import React, {Component} from 'react';
 import {capitalize, query_building_list} from '../api/Api'
-import ReactTable from "react-table";
-import "react-table/react-table.css";
+import "./css/react-table.css";
+import ReactTable from "./ReactTable";
 
 class BuildingList extends Component {
     constructor(){
         super();
-        console.log("building list constructor")
         this.state = {
             isLoading:false,
-            buildingList:[]
+            buildingList:[],
+            filtered: []
         }
     }
 
     async componentWillMount() {
-        console.log("will mount")
         this.setState({isLoading:true})
         let res = await query_building_list();
         this.setState({isLoading:false})
@@ -28,7 +27,7 @@ class BuildingList extends Component {
         var list = [];
 
         res.map((building)=>{
-            list.push(building.name)
+            list.push({"name": capitalize(building.name)})
         })
 
         console.log(JSON.stringify(list))
@@ -38,14 +37,10 @@ class BuildingList extends Component {
 
     render() {
         const list = this.state.buildingList
-        console.log(list)
-        const data = {
-          name:list
-        }
-        // const number = list.length;
+        const number = list.length;
 
         const loading = this.state.isLoading ? (
-            <div>
+            <div align="center">
                 <h4>Loading...</h4>
                 <div className="lds-ring">
                     <div/>
@@ -55,38 +50,51 @@ class BuildingList extends Component {
                 </div>
             </div>
         ) : (
-            <div>dsfsdfd</div>
-            // <div align="center"><h5>Total {number} Buildings</h5></div>
+            <div></div>
         );
 
 
-        // const tableRow = list.map((row) =>
-        //     <tr>
-        //         <td >{capitalize(row)}</td>
-        //     </tr>
-        // )
 
-
-        return (
-            <div>
-              <ReactTable
-                data={data}
-                columns={[
-                  {
-                    Header: "Info",
-                    columns: [
-                      {
-                        Header: "Name"
-                      }
-                    ]
-                  }
-                ]}
-                defaultPageSize={10}
-                className="-striped -highlight"
-              />
-
+        if(this.state.isLoading){
+          return (
+            loading
+          )
+        }else{
+          return (
+            <div className="row justify-content-center">
+              <div className="col-8 align-self-center" align="center">
+                <ReactTable
+                  data={list}
+                  columns={[
+                    {
+                      Header: "Building List",
+                      accessor: 'name',
+                      filterMethod: (filter, row) => {
+                        var regexConstructor = new RegExp(filter.value, 'i');
+                        return regexConstructor.test(row[filter.id]);
+                      },
+                      Footer: (
+                        <span>
+                          <strong>Total:   {number}</strong>
+                        </span>
+                      )
+                    }
+                  ]}
+                  filterable
+                  filtered={this.state.filtered}
+                  onFilteredChange={filtered => this.setState({ filtered })}
+                  defaultSorted={[
+                    {
+                      id: "name"
+                    }
+                  ]}
+                  defaultPageSize={10}
+                  className="-striped -highlight"
+                />
+              </div>
             </div>
-        )
+          )
+        }
     }
 
 }
