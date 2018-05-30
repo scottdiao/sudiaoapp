@@ -12,6 +12,7 @@ import numpy as np
 import tensorflow as tf
 import os, pickle, uuid, argparse
 import datastore_api as dsa
+import cnn
 from google.cloud import datastore
 
 
@@ -19,7 +20,7 @@ app = Flask(__name__)
 CORS(app)
 ds = datastore.Client('atomic-amulet-199016')
 model_dir = './keras_model/inception_v3.h5'
-model = load_model(model_dir)
+# model = load_model(model_dir)
 graph = tf.get_default_graph()
 
 
@@ -53,7 +54,8 @@ def building_file():
     uuid = request.form.get("uuid")
     file_name = "./uploads/"+uuid+secure_filename(f.filename)
     f.save(file_name)
-    response = run_keras_cnn(file_name)
+    # response = run_keras_cnn(file_name)
+    response = cnn.run_cnn(file_name)
     os.remove(file_name)
     return response
 

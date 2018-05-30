@@ -173,7 +173,7 @@ async handleSubmit(event) {
                           <DropzoneComponent className="fileDropZone" config={config}
                                              eventHandlers={eventHandlers}
                                              djsConfig={djsConfig} />
-                          <div className="spacerSmall"/>
+                          <div className="spacer"/>
                           <div>
                               {button}
                           </div>
@@ -182,7 +182,7 @@ async handleSubmit(event) {
 
                       </form>
                   </div>
-              <div className="col-8 align-self-center" >
+              <div className="col-12 align-self-center" >
                   {result}
               </div>
           </div>

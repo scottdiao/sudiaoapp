@@ -91,8 +91,10 @@ class BuildingList extends Component {
                   defaultPageSize={10}
                   className="-striped -highlight"
                 />
+                 <div className="spacerSmall" />
               </div>
             </div>
+
           )
         }
     }

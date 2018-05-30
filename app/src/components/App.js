@@ -17,13 +17,16 @@ class App extends Component {
   render() {
     return (
       <div className="container">
+        <div className="bodyContainer">
         <Header />
-        <div className="spacer"/>
-          <Switch>
-              <Route path='/introduction' component={Introduction}/>
-              <Route path='/list' component={BuildingList}/>
-              <Route path='/' component={Main}/>
-          </Switch>
+          <div className="spacer"/>
+            <Switch>
+                <Route path='/introduction' component={Introduction}/>
+                <Route path='/list' component={BuildingList}/>
+                <Route path='/' component={Main}/>
+            </Switch>
+            <div className="spacer" />
+          </div>
           <Footer />
       </div>
     );
