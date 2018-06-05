@@ -1,0 +1,8 @@
+Retrain script:
+python retrain.py --image_dir ./building_photos --how_many_training_steps 10000 --print_misclassified_test_images true --eval_step_interval 10 --tfhub_module https://tfhub.dev/google/imagenet/resnet_v2_152/feature_vector/1
+python fine_tuning.py --image_dir ./building_photos --how_many_training_steps 100 --print_misclassified_test_images true --eval_step_interval 10
+ 	
+
+Tensorboard:
+cd C:\sudiaoapp\ml_ws\
+tensorboard --logdir ../model/retrain_logs --host=127.0.0.1

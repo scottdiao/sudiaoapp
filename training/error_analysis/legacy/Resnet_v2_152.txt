@@ -1,0 +1,674 @@
+Final test accuracy = 80.4% (N=2332)
+Final train accuracy = 97.5% (N=18226)
+Final valid accuracy = 82.4% (N=2300)
+
+
+=== MISCLASSIFIED TEST IMAGES ===
+20 Fenchurch Street\images (16).jpg  guangzhou ctf finance centre
+20 Fenchurch Street\images (61).jpg  itsukushima shrine
+30 St Mary Axe\download (11).jpeg  chrysler building
+30 St Mary Axe\images (25).jpeg  westin peachtree plaza hotel
+30 St Mary Axe\images (56).jpeg  ping an finance centre
+30 St Mary Axe\images (98).jpeg  20 fenchurch street
+432 park avenue\images (100).jpg  national september 11 memorial museum
+432 park avenue\images (13).jpg  the shard
+432 park avenue\images (32).jpg  smith tower
+432 park avenue\images (67).jpg  smith tower
+432 park avenue\images (84).jpg  guangzhou ctf finance centre
+Abenobashi Terminal Building\images (59).jpg  432 park avenue
+Abraj Al Bait\images (27).jpg  london bridge
+Abraj Al Bait\images (8).jpg  independence hall
+Abraj Al Bait\images (80).jpg  great mosque of mecca
+Acropolis of Athens\images (59).jpeg  great mosque of mecca
+Angkor Wat\images (27).jpeg  acropolis of athens
+Angkor Wat\images (61).jpeg  palace of westminster
+Apple Park\images (26).jpeg  headquarters of the united nations
+Arc de Triomphe\images (78).jpeg  notro dame de paries
+Arc de Triomphe\images (82).jpeg  bank of china tower
+Atomium\images (34).jpeg  the interlace
+Atomium\images (38).jpeg  beijing national stadium
+Bank of China Tower\images (11).jpg  trump international hotel and tower chicago
+Bank of China Tower\images (44).jpg  abenobashi terminal building
+Beijing National Stadium\images (63).jpeg  beijing national aquatics center
+Beijing National Stadium\images (99).jpeg  apple park
+Big Ben\images (25).jpeg  palace of westminster
+Big Ben\images (56).jpeg  eiffel tower
+Buckingham Palace\images (16).jpg  independence hall
+Burj Al Arab\images (37).jpeg  bank of china tower
+Burj Al Arab\images (41).jpeg  westin peachtree plaza hotel
+Burj Khalifa\images (58).jpeg  cn tower
+Burj Khalifa\images (62).jpeg  palace of westminster
+CITIC Plaza\images (27).jpg  yokohama landmark tower
+CITIC Plaza\images (7).jpg  abenobashi terminal building
+CITIC Plaza\images (87).jpg  transamerica pyramid
+Canton Tower\images (12).jpeg  lakhta center
+Canton Tower\images (16).jpeg  burj khalifa
+Canton Tower\images (59).jpeg  millennium dome
+Chrysler Building\images (2).jpg  petronas towers
+Chrysler Building\images (40).jpg  empire state building
+Chrysler Building\images (83).jpg  432 park avenue
+Chrysler Building\images (86).jpg  smith tower
+Colosseum\images (59).jpeg  krak des chevaliers
+Commerzbank Tower\images (1).jpg  abenobashi terminal building
+Commerzbank Tower\images (16).jpg  trump international hotel and tower chicago
+Commerzbank Tower\images (60).jpg  smith tower
+Commerzbank Tower\images.jpg  trump international hotel and tower chicago
+Eiffel Tower\images (51).jpg  capital gate
+Eiffel Tower\images (83).jpg  canton tower
+Empire State Building\images (24).jpg  ping an finance centre
+Empire State Building\images (32).jpg  chrysler building
+Empire State Building\images (54).jpg  burj khalifa
+Empire State Building\images (55).jpg  chrysler building
+Fallingwater\images (19).jpg  national september 11 memorial museum
+Fallingwater\images (99).jpg  solomon r guggenheim museum
+Federation Tower\images (73).jpg  citic plaza
+Federation Tower\Z.jpg  shun hing square
+Flatiron Building\9.jpeg  fallingwater
+Flatiron Building\images (21).jpeg  big ben
+Flatiron Building\images (39).jpeg  leaning tower of pisa
+Flatiron Building\images (60).jpeg  abraj al bait
+Forbidden City\images (37).jpeg  itsukushima shrine
+Forbidden City\images (48).jpeg  the potala palace
+Gateway Arch\a.jpg  lotte world tower
+Gateway Arch\images (32).jpg  taj mahal
+Giza pyramid complex\images (80).jpeg  angkor wat
+Great Mosque of Mecca\images (1).jpeg  dome of the rock
+Great Mosque of Mecca\images (13).jpeg  canton tower
+Guangzhou CTF Finance Centre\images (13).jpg  kk100
+Guangzhou CTF Finance Centre\images (24).jpg  shun hing square
+Guangzhou CTF Finance Centre\images (31).jpg  ping an finance centre
+Guangzhou CTF Finance Centre\images (43).jpg  tour first
+Guangzhou CTF Finance Centre\images (85).jpg  citic plaza
+Guangzhou CTF Finance Centre\Z (5).jpg  tour first
+Guangzhou International Finance Center\images (20).jpg  international commerce centre
+Guangzhou International Finance Center\images (25).jpg  guangzhou ctf finance centre
+Guangzhou International Finance Center\images (34).jpg  zifeng tower
+Guangzhou International Finance Center\images (58).jpg  guangzhou ctf finance centre
+Guangzhou International Finance Center\images (69).jpg  flatiron building
+Guangzhou International Finance Center\images (76).jpg  guangzhou ctf finance centre
+Guangzhou International Finance Center\images (79).jpg  ping an finance centre
+Hagia Sophia\images (60).jpeg  dome of the rock
+Headquarters of the United Nations\images (40).jpeg  yokohama landmark tower
+Headquarters of the United Nations\images (60).jpeg  seattle central library
+Headquarters of the United Nations\images (61).jpeg  smith tower
+Headquarters of the United Nations\images (64).jpeg  commerzbank tower
+Himeji Castle\9.jpeg  windsor castle
+Himeji Castle\download (10).jpeg  forbidden city
+Itsukushima Shrine\images (6).jpeg  stockholm city hall
+KK100\2Q==.jpg  ping an finance centre
+KK100\images (34).jpg  ping an finance centre
+KK100\images (46).jpg  lotte world tower
+KK100\images (51).jpg  trump international hotel and tower chicago
+KK100\images (59).jpg  westin peachtree plaza hotel
+KK100\images (68).jpg  ping an finance centre
+Krak des Chevaliers\images (24).jpeg  windsor castle
+Lakhta Center\images (14).jpg  burj khalifa
+Lakhta Center\images (23).jpg  millennium dome
+Lakhta Center\images (62).jpg  taipei 101
+Leaning Tower of Pisa\images (63).jpeg  acropolis of athens
+Lloyd's building\download (5).jpeg  smith tower
+Lloyd's building\images (18).jpeg  atomium
+London Bridge\images (34).jpg  20 fenchurch street
+London Bridge\images (42).jpg  smith tower
+London Bridge\images (66).jpg  20 fenchurch street
+London Bridge\images (78).jpg  the pentagon
+Lotte World Tower\images (17).jpg  cn tower
+Lotte World Tower\images (27).jpg  guangzhou international finance center
+Lotte World Tower\images (49).jpg  citic plaza
+Lotte World Tower\images (80).jpg  ping an finance centre
+Lotte World Tower\images (85).jpg  empire state building
+Lotus Temple\images (100).jpg  angkor wat
+Mehrangarh\images (77).jpeg  acropolis of athens
+Mercury City Tower\images (81).jpg  federation tower
+Mercury City Tower\images (92).jpg  federation tower
+Milad Tower\images (59).jpg  stockholm city hall
+Moscow Kremlin\images (40).jpeg  neuschwanstein castle
+Moscow Kremlin\images (59).jpeg  buckingham palace
+Moscow Kremlin\images (71).jpeg  windsor castle
+Moscow Kremlin\images (82).jpeg  abraj al bait
+Moscow Kremlin\images (88).jpeg  st paul s cathedral
+National September 11 Memorial & Museum\images (27).jpg  trump international hotel and tower chicago
+National September 11 Memorial & Museum\images (92).jpg  bank of china tower
+National September 11 Memorial & Museum\images (99).jpg  seattle central library
+Notro Dame De Paries\images (37).jpeg  ryugyong hotel
+Notro Dame De Paries\images (45).jpeg  krak des chevaliers
+Notro Dame De Paries\images (56).jpeg  cologne cathedral
+One World Trade Center\images (1).jpg  cn tower
+One World Trade Center\images (39).jpg  citic plaza
+One World Trade Center\images (47).jpg  abraj al bait
+One World Trade Center\Z (4).jpg  ping an finance centre
+Palace of Westminster\images (17).jpeg  big ben
+Palace of Westminster\images (36).jpeg  big ben
+Palace of Westminster\images (92).jpeg  moscow kremlin
+Petronas Towers\images (5).jpeg  burj khalifa
+Petronas Towers\images (69).jpeg  westin peachtree plaza hotel
+Petronas Towers\images (79).jpeg  chrysler building
+Radcliffe Camera\images (47).jpeg  big ben
+Ryugyong Hotel\images (35).jpeg  transamerica pyramid
+Ryugyong Hotel\images (97).jpeg  chrysler building
+Seattle Central Library\images (73).jpeg  mercury city tower
+Shanghai Tower\2Q== (3).jpg  guangzhou ctf finance centre
+Shanghai Tower\2Q== (4).jpg  international commerce centre
+Shanghai Tower\images (1).jpg  20 fenchurch street
+Shanghai Tower\images (13).jpg  ping an finance centre
+Shanghai Tower\images (25).jpg  lloyd s building
+Shanghai Tower\images (27).jpg  ping an finance centre
+Shanghai Tower\images (29).jpg  one world trade center
+Shun Hing Square\images (48).jpg  zifeng tower
+Shun Hing Square\images (76).jpg  one world trade center
+Shwedagon Pagoda\images (29).jpeg  eiffel tower
+Shwedagon Pagoda\images (79).jpeg  tokyo tower
+Shwedagon Pagoda\images (81).jpeg  taj mahal
+Smith Tower\download (1).jpeg  taipei 101
+Smith Tower\images (11).jpeg  chrysler building
+Smith Tower\images (24).jpeg  flatiron building
+Smith Tower\images (43).jpeg  milad tower
+Smith Tower\images (92).jpeg  taipei 101
+Solomon R. Guggenheim Museum\images (82).jpeg  london bridge
+Solomon R. Guggenheim Museum\images (83).jpeg  flatiron building
+Statue of Liberty\images (56).jpeg  lakhta center
+Stockholm City Hall\images (3).jpeg  the shard
+Sydney Opera House\maxresdefault-3.jpg  taj mahal
+Sydney Opera House\Sydney-Opera-House-31126.jpg  the interlace
+Taipei 101\download (6).jpeg  lotte world tower
+Taipei 101\images (15).jpeg  petronas towers
+Taipei 101\images (26).jpeg  432 park avenue
+Taipei 101\images (32).jpeg  432 park avenue
+Taipei 101\images (4).jpeg  zifeng tower
+Taipei 101\images (55).jpeg  zifeng tower
+Taipei 101\images (64).jpeg  shun hing square
+Taipei 101\images (97).jpeg  cn tower
+Taj Mahal\8d870880-b406-11e7-95c2-e7a557915c7a_4000x1584_213624.JPG  shwedagon pagoda
+The Pentagon\images (5).jpeg  london bridge
+The Potala Palace\images (6).jpeg  great wall of china
+Tokyo Tower\images (54).jpg  flatiron building
+Tokyo Tower\images (8).jpg  forbidden city
+Tour First_\images (29).jpg  westin peachtree plaza hotel
+Tour First_\images (33).jpg  trump international hotel and tower chicago
+Tour First_\Z (1).jpg  abenobashi terminal building
+Tour First_\Z (5).jpg  trump international hotel and tower chicago
+Transamerica Pyramid\2.jpeg  ryugyong hotel
+Transamerica Pyramid\images (39).jpeg  the shard
+Transamerica Pyramid\images (42).jpeg  cn tower
+Transamerica Pyramid\images (70).jpeg  ryugyong hotel
+Transamerica Pyramid\images (76).jpeg  one world trade center
+Trump International Hotel and Tower (Chicago)\images (11).jpg  willis tower
+Trump International Hotel and Tower (Chicago)\images (40).jpg  yokohama landmark tower
+Trump International Hotel and Tower (Chicago)\images (8).jpg  citic plaza
+Trump International Hotel and Tower (Chicago)\Z (2).jpg  shun hing square
+Westin Peachtree Plaza Hotel\images (22).jpg  the interlace
+Westin Peachtree Plaza Hotel\images (38).jpg  commerzbank tower
+Westin Peachtree Plaza Hotel\images (69).jpg  citic plaza
+Willis Tower\9k= (2).jpg  citic plaza
+Willis Tower\images (33).jpg  commerzbank tower
+Windsor Castle\images (39).jpeg  big ben
+Windsor Castle\images (81).jpeg  notro dame de paries
+Yokohama Landmark Tower\images (93).jpg  guangzhou international finance center
+city of capitals\images (32).jpg  yokohama landmark tower
+city of capitals\images (55).jpg  mercury city tower
+city of capitals\images (63).jpg  evolution tower
+city of capitals\images (68).jpg  lloyd s building
+city of capitals\images (78).jpg  20 fenchurch street
+cn tower\images (62).jpg  space needle
+international commerce centre\images (11).jpg  ping an finance centre
+international commerce centre\images (12).jpg  transamerica pyramid
+international commerce centre\images (55).jpg  guangzhou international finance center
+international commerce centre\images (8).jpg  guangzhou ctf finance centre
+messeturm\images (25).jpg  city of capitals
+messeturm\images (34).jpg  chrysler building
+messeturm\images (37).jpg  the shard
+messeturm\images.jpg  smith tower
+ping an finance centre\9k= (5).jpg  empire state building
+ping an finance centre\images (100).jpg  yokohama landmark tower
+ping an finance centre\images (14).jpg  petronas towers
+ping an finance centre\images (30).jpg  shanghai tower
+ping an finance centre\images (45).jpg  headquarters of the united nations
+ping an finance centre\images (53).jpg  guangzhou international finance center
+ping an finance centre\images (95).jpg  messeturm
+ping an finance centre\images (99).jpg  messeturm
+st paul's cathedral\images (86).jpg  radcliffe camera
+the shard_\images (38).jpg  ryugyong hotel
+the shard_\images (82).jpg  lakhta center
+zifeng tower\images (31).jpg  mercury city tower
+zifeng tower\images (40).jpg  beijing national aquatics center
+zifeng tower\images (50).jpg  abraj al bait
+zifeng tower\images (64).jpg  20 fenchurch street
+
+
+=== MISCLASSIFIED TRAIN IMAGES ===
+20 Fenchurch Street\images (26).jpg  flatiron building
+30 St Mary Axe\images (48).jpeg  yokohama landmark tower
+432 park avenue\images (51).jpg  willis tower
+432 park avenue\images (57).jpg  westin peachtree plaza hotel
+Abenobashi Terminal Building\images (41).jpg  432 park avenue
+Abraj Al Bait\images.jpg  big ben
+Acropolis of Athens\images (20).jpeg  krak des chevaliers
+Apple Park\images (63).jpeg  flatiron building
+Bank of China Tower\images (38).jpg  abenobashi terminal building
+Bank of China Tower\images (66).jpg  one world trade center
+Bank of China Tower\images (86).jpg  city of capitals
+Big Ben\pic_127.jpg  moscow kremlin
+Big Ben\pic_138.jpg  palace of westminster
+Big Ben\pic_142.jpg  notro dame de paries
+Big Ben\pic_145.jpg  palace of westminster
+Big Ben\pic_153.jpg  palace of westminster
+Big Ben\pic_166.jpg  palace of westminster
+Big Ben\images (22).jpeg  abraj al bait
+Big Ben\images (23).jpeg  moscow kremlin
+Big Ben\images (30).jpeg  apple park
+Big Ben\images (34).jpeg  smith tower
+Big Ben\images (41).jpeg  canton tower
+Big Ben\images (60).jpeg  chrysler building
+Big Ben\images (61).jpeg  abraj al bait
+Big Ben\images (7).jpeg  smith tower
+Buckingham Palace\images (14).jpg  windsor castle
+Burj Khalifa\images (6).jpeg  tokyo tower
+Burj Khalifa\images (82).jpeg  ping an finance centre
+CITIC Plaza\images (13).jpg  zifeng tower
+CITIC Plaza\images (20).jpg  guangzhou ctf finance centre
+CITIC Plaza\images (31).jpg  zifeng tower
+CITIC Plaza\images (35).jpg  guangzhou ctf finance centre
+CITIC Plaza\images (80).jpg  shun hing square
+CITIC Plaza\images (82).jpg  national september 11 memorial museum
+CITIC Plaza\Z (3).jpg  guangzhou ctf finance centre
+CITIC Plaza\Z (6).jpg  transamerica pyramid
+CITIC Plaza\Z (7).jpg  smith tower
+Canton Tower\download (9).jpeg  burj khalifa
+Canton Tower\images (14).jpeg  golden gate bridge
+Canton Tower\images (5).jpeg  one world trade center
+Canton Tower\images (64).jpeg  burj khalifa
+Chrysler Building\images (23).jpg  432 park avenue
+Chrysler Building\images (35).jpg  432 park avenue
+Chrysler Building\images (45).jpg  messeturm
+Chrysler Building\images (62).jpg  empire state building
+Chrysler Building\images (81).jpg  willis tower
+Chrysler Building\images (93).jpg  lakhta center
+Colosseum\images (75).jpeg  windsor castle
+Commerzbank Tower\2Q== (5).jpg  trump international hotel and tower chicago
+Commerzbank Tower\images (17).jpg  yokohama landmark tower
+Commerzbank Tower\images (18).jpg  shun hing square
+Commerzbank Tower\images (39).jpg  taipei 101
+Commerzbank Tower\images (40).jpg  willis tower
+Commerzbank Tower\images (47).jpg  citic plaza
+Commerzbank Tower\images (92).jpg  zifeng tower
+Empire State Building\images (23).jpg  432 park avenue
+Empire State Building\images (26).jpg  transamerica pyramid
+Federation Tower\images (16).jpg  international commerce centre
+Flatiron Building\6.jpeg  30 st mary axe
+Flatiron Building\images (45).jpeg  432 park avenue
+Flatiron Building\images (47).jpeg  smith tower
+Flatiron Building\images (74).jpeg  chrysler building
+Flatiron Building\images (80).jpeg  smith tower
+Flatiron Building\images (93).jpeg  smith tower
+Flatiron Building\images (97).jpeg  20 fenchurch street
+Forbidden City\images (52).jpg  statue of liberty
+Gateway Arch\images (28).jpg  lakhta center
+Gateway Arch\images (29).jpg  st paul s cathedral
+Great Mosque of Mecca\images (37).jpeg  ryugyong hotel
+Great Mosque of Mecca\images (58).jpeg  hagia sophia
+Great Mosque of Mecca\images (83).jpeg  dome of the rock
+Guangzhou CTF Finance Centre\images (40).jpg  citic plaza
+Guangzhou CTF Finance Centre\images (52).jpg  willis tower
+Guangzhou CTF Finance Centre\images (59).jpg  willis tower
+Guangzhou CTF Finance Centre\images (6).jpg  tour first
+Guangzhou CTF Finance Centre\images (68).jpg  canton tower
+Guangzhou CTF Finance Centre\images (73).jpg  guangzhou international finance center
+Guangzhou CTF Finance Centre\images (77).jpg  432 park avenue
+Guangzhou CTF Finance Centre\images (8).jpg  international commerce centre
+Guangzhou CTF Finance Centre\images.jpg  shanghai tower
+Guangzhou International Finance Center\images (16).jpg  ping an finance centre
+Guangzhou International Finance Center\images (19).jpg  guangzhou ctf finance centre
+Guangzhou International Finance Center\images (31).jpg  ping an finance centre
+Guangzhou International Finance Center\images (51).jpg  guangzhou ctf finance centre
+Guangzhou International Finance Center\images (86).jpg  headquarters of the united nations
+Guangzhou International Finance Center\images (96).jpg  guangzhou ctf finance centre
+Guangzhou International Finance Center\images (98).jpg  guangzhou ctf finance centre
+Hagia Sophia\images (30).jpeg  moscow kremlin
+Hassan II Mosque\images (40).jpeg  lotte world tower
+Headquarters of the United Nations\download (8).jpeg  tour first
+Headquarters of the United Nations\images (49).jpeg  guangzhou ctf finance centre
+Headquarters of the United Nations\images (51).jpeg  the louvre
+Headquarters of the United Nations\images (56).jpeg  ryugyong hotel
+Headquarters of the United Nations\images (62).jpeg  flatiron building
+Headquarters of the United Nations\images (81).jpeg  guangzhou ctf finance centre
+Headquarters of the United Nations\images (87).jpeg  westin peachtree plaza hotel
+Headquarters of the United Nations\images (96).jpeg  20 fenchurch street
+Headquarters of the United Nations\images (98).jpeg  trump international hotel and tower chicago
+Independence Hall\images (94).jpeg  palace of westminster
+KK100\images (3).jpg  citic plaza
+Krak des Chevaliers\images (3).jpeg  mehrangarh
+Lakhta Center\images (12).jpg  20 fenchurch street
+Leaning Tower of Pisa\download (6).jpeg  windsor castle
+London Bridge\images (22).jpg  big ben
+London Bridge\images (45).jpg  lotte world tower
+London Bridge\images (51).jpg  the shard
+Lotte World Tower\images (31).jpg  the shard
+Lotte World Tower\images (71).jpg  taipei 101
+Lotte World Tower\images (72).jpg  the shard
+Lotte World Tower\images (89).jpg  yokohama landmark tower
+Mehrangarh\images (57).jpeg  hagia sophia
+Mercury City Tower\images (1).jpg  tokyo tower
+Mercury City Tower\images (50).jpg  432 park avenue
+Mercury City Tower\images (64).jpg  federation tower
+Mercury City Tower\Z (4).jpg  federation tower
+Milad Tower\images (44).jpg  ryugyong hotel
+Milad Tower\images (56).jpg  lakhta center
+Moscow Kremlin\images (42).jpeg  palace of westminster
+Moscow Kremlin\images (66).jpeg  palace of westminster
+Neuschwanstein Castle\images (25).jpeg  radcliffe camera
+Neuschwanstein Castle\images (96).jpeg  moscow kremlin
+Notro Dame De Paries\images (16).jpeg  arc de triomphe
+Notro Dame De Paries\images (78).jpeg  angkor wat
+Notro Dame De Paries\images (84).jpeg  moscow kremlin
+Notro Dame De Paries\images (88).jpeg  flatiron building
+One World Trade Center\images (11).jpg  guangzhou ctf finance centre
+One World Trade Center\images (40).jpg  432 park avenue
+One World Trade Center\images (48).jpg  petronas towers
+One World Trade Center\images (56).jpg  petronas towers
+One World Trade Center\images (80).jpg  big ben
+One World Trade Center\images (82).jpg  commerzbank tower
+One World Trade Center\Z.jpg  yokohama landmark tower
+Palace of Westminster\images (21).jpeg  buckingham palace
+Palace of Westminster\images (24).jpeg  notro dame de paries
+Palace of Westminster\images (40).jpeg  big ben
+Palace of Westminster\images (55).jpeg  big ben
+Palace of Westminster\images (56).jpeg  big ben
+Palace of Westminster\images (59).jpeg  ryugyong hotel
+Palace of Westminster\images (83).jpeg  big ben
+Petronas Towers\images (61).jpeg  ping an finance centre
+Ryugyong Hotel\images (23).jpeg  lotte world tower
+Ryugyong Hotel\images (26).jpeg  the shard
+Ryugyong Hotel\images (30).jpeg  arc de triomphe
+Ryugyong Hotel\images (50).jpeg  burj khalifa
+Ryugyong Hotel\images (60).jpeg  chrysler building
+Ryugyong Hotel\images (72).jpeg  the shard
+Ryugyong Hotel\images (98).jpeg  cn tower
+Ryugyong Hotel\images (99).jpeg  international commerce centre
+Shun Hing Square\9k= (2).jpg  transamerica pyramid
+Shun Hing Square\A.jpg  kk100
+Shun Hing Square\images (12).jpg  guangzhou ctf finance centre
+Shun Hing Square\images (15).jpg  flatiron building
+Shun Hing Square\images (25).jpg  commerzbank tower
+Shun Hing Square\images (49).jpg  citic plaza
+Shun Hing Square\images (55).jpg  trump international hotel and tower chicago
+Shun Hing Square\images (70).jpg  citic plaza
+Shun Hing Square\images (74).jpg  kk100
+Shun Hing Square\images (81).jpg  guangzhou international finance center
+Shun Hing Square\Z (7).jpg  trump international hotel and tower chicago
+Smith Tower\images (20).jpeg  flatiron building
+Smith Tower\images.jpeg  shun hing square
+Solomon R. Guggenheim Museum\images (79).jpeg  white house
+Statue of Liberty\download (13).jpeg  burj khalifa
+Sydney Opera House\maxresdefault-2_1.jpg  taj mahal
+Taipei 101\images (76).jpeg  national september 11 memorial museum
+The Interlace\images (87).jpeg  zifeng tower
+The Louvre\images (14).jpeg  hagia sophia
+The Louvre\images (18).jpeg  buckingham palace
+The Louvre\images (38).jpeg  london bridge
+The Louvre\images (73).jpeg  windsor castle
+The Louvre\images (90).jpeg  palace of westminster
+Tokyo Tower\images (42).jpg  eiffel tower
+Tokyo Tower\images (52).jpg  eiffel tower
+Tokyo Tower\images (64).jpg  zifeng tower
+Tokyo Tower\images (71).jpg  commerzbank tower
+Tour First_\images (21).jpg  chrysler building
+Tour First_\images (45).jpg  independence hall
+Tour First_\Z (1)1.jpg  trump international hotel and tower chicago
+Transamerica Pyramid\images (1).jpeg  burj al arab
+Transamerica Pyramid\images (17).jpeg  one world trade center
+Transamerica Pyramid\images (78).jpeg  radcliffe camera
+Trump International Hotel and Tower (Chicago)\images (19)1.jpg  flatiron building
+Trump International Hotel and Tower (Chicago)\images (33).jpg  citic plaza
+Trump International Hotel and Tower (Chicago)\images (37).jpg  commerzbank tower
+Westin Peachtree Plaza Hotel\9k= (1).jpg  yokohama landmark tower
+Westin Peachtree Plaza Hotel\images (27).jpg  shun hing square
+Westin Peachtree Plaza Hotel\images (46).jpg  commerzbank tower
+Westin Peachtree Plaza Hotel\images (76).jpg  citic plaza
+Westin Peachtree Plaza Hotel\images (98).jpg  shun hing square
+Willis Tower\9k= (3).jpg  ping an finance centre
+Willis Tower\images (100).jpg  432 park avenue
+Willis Tower\Z.jpg  shun hing square
+Windsor Castle\images (35).jpeg  buckingham palace
+Windsor Castle\images (83).jpeg  neuschwanstein castle
+Yokohama Landmark Tower\images (44).jpg  abenobashi terminal building
+Yokohama Landmark Tower\images (54).jpg  ping an finance centre
+city of capitals\2Q==.jpg  trump international hotel and tower chicago
+city of capitals\images (36).jpg  evolution tower
+city of capitals\images (54).jpg  yokohama landmark tower
+city of capitals\Z (8).jpg  evolution tower
+cn tower\images (67).jpg  milad tower
+cn tower\images (92).jpg  ryugyong hotel
+evolution tower\2Q== (5).jpg  trump international hotel and tower chicago
+evolution tower\images (31).jpg  mercury city tower
+evolution tower\images (83).jpg  mercury city tower
+international commerce centre\9k= (2).jpg  abenobashi terminal building
+messeturm\images (13).jpg  smith tower
+messeturm\images (61).jpg  lotte world tower
+messeturm\images (66).jpg  kk100
+messeturm\images (76).jpg  city of capitals
+messeturm\images (80).jpg  citic plaza
+messeturm\images (92).jpg  tour first
+messeturm\images (97).jpg  smith tower
+ping an finance centre\images (27).jpg  one world trade center
+ping an finance centre\images (34).jpg  shun hing square
+ping an finance centre\images (37).jpg  432 park avenue
+ping an finance centre\images (68).jpg  guangzhou ctf finance centre
+ping an finance centre\images (73).jpg  guangzhou ctf finance centre
+ping an finance centre\images (83).jpg  432 park avenue
+ping an finance centre\images (92).jpg  burj khalifa
+the shard_\images (75).jpg  transamerica pyramid
+the shard_\images (77).jpg  lotte world tower
+the shard_\images (98).jpg  flatiron building
+white house\images (33).jpg  windsor castle
+zifeng tower\images (32).jpg  taipei 101
+zifeng tower\images (41).jpg  tour first
+zifeng tower\images (44).jpg  trump international hotel and tower chicago
+zifeng tower\images (53).jpg  432 park avenue
+zifeng tower\images (74).jpg  empire state building
+zifeng tower\images (75).jpg  shanghai tower
+
+
+=== MISCLASSIFIED VALID IMAGES ===
+432 park avenue\images (34).jpg  taipei 101
+432 park avenue\images (60).jpg  flatiron building
+432 park avenue\images (70).jpg  empire state building
+432 park avenue\images (91).jpg  willis tower
+432 park avenue\images (99).jpg  willis tower
+Abenobashi Terminal Building\images (16).jpg  the interlace
+Abenobashi Terminal Building\images (3).jpg  transamerica pyramid
+Abenobashi Terminal Building\images (44).jpg  zifeng tower
+Abenobashi Terminal Building\images (56).jpg  willis tower
+Abraj Al Bait\images (16).jpg  great mosque of mecca
+Abraj Al Bait\images (71).jpg  burj khalifa
+Abraj Al Bait\images (85).jpg  great mosque of mecca
+Acropolis of Athens\images (33).jpeg  national september 11 memorial museum
+Angkor Wat\images (15).jpeg  flatiron building
+Angkor Wat\images (24).jpeg  mehrangarh
+Angkor Wat\images (36).jpeg  itsukushima shrine
+Angkor Wat\images (59).jpeg  statue of liberty
+Angkor Wat\images (68).jpeg  mehrangarh
+Apple Park\images (67).jpeg  headquarters of the united nations
+Apple Park\images (84).jpeg  headquarters of the united nations
+Bank of China Tower\images (90).jpg  one world trade center
+Beijing National Aquatics Center\images (25).jpeg  the interlace
+Beijing National Stadium\images (25).jpeg  great mosque of mecca
+Big Ben\download (10).jpeg  palace of westminster
+Big Ben\images (20).jpeg  abenobashi terminal building
+Big Ben\images (36).jpeg  taipei 101
+Big Ben\images (39).jpeg  abraj al bait
+Buckingham Palace\images (60).jpg  the louvre
+Burj Al Arab\images (74).jpeg  burj khalifa
+Burj Al Arab\images (84).jpeg  lakhta center
+Burj Khalifa\images (24).jpeg  space needle
+Burj Khalifa\images (67).jpeg  ping an finance centre
+Burj Khalifa\images (98).jpeg  yokohama landmark tower
+CITIC Plaza\DD.jpg  shun hing square
+CITIC Plaza\images (33).jpg  guangzhou international finance center
+CITIC Plaza\images (64).jpg  international commerce centre
+CITIC Plaza\images (69).jpg  trump international hotel and tower chicago
+Canton Tower\images (56).jpeg  stockholm city hall
+Canton Tower\images (79).jpeg  burj khalifa
+Capital Gate\images (21).jpeg  20 fenchurch street
+Capital Gate\images (8).jpeg  ryugyong hotel
+Chrysler Building\2Q== (1).jpg  flatiron building
+Chrysler Building\images (34).jpg  smith tower
+Colosseum\images (56).jpeg  apple park
+Commerzbank Tower\2Q==.jpg  yokohama landmark tower
+Commerzbank Tower\images (36).jpg  432 park avenue
+Eiffel Tower\9k= (1).jpg  canton tower
+Empire State Building\images (16).jpg  tokyo tower
+Empire State Building\images (43).jpg  flatiron building
+Empire State Building\images (50).jpg  abraj al bait
+Federation Tower\9k= (1).jpg  guangzhou ctf finance centre
+Federation Tower\images (54).jpg  guangzhou international finance center
+Federation Tower\images (61).jpg  kk100
+Flatiron Building\images (2).jpeg  seattle central library
+Flatiron Building\images (25).jpeg  independence hall
+Forbidden City\images (15).jpg  statue of liberty
+Forbidden City\images (12).jpeg  the louvre
+Forbidden City\images (20).jpeg  the louvre
+Forbidden City\images (75).jpeg  the potala palace
+Giza pyramid complex\images (15).jpeg  bank of china tower
+Giza pyramid complex\images (51).jpeg  the louvre
+Great Mosque of Mecca\images (53).jpeg  dome of the rock
+Guangzhou CTF Finance Centre\9k=.jpg  canton tower
+Guangzhou CTF Finance Centre\images (2).jpg  international commerce centre
+Guangzhou CTF Finance Centre\images (61).jpg  guangzhou international finance center
+Guangzhou International Finance Center\2Q== (2).jpg  lotte world tower
+Guangzhou International Finance Center\images (10).jpg  guangzhou ctf finance centre
+Guangzhou International Finance Center\images (100).jpg  federation tower
+Guangzhou International Finance Center\images (62).jpg  guangzhou ctf finance centre
+Guangzhou International Finance Center\images (80).jpg  guangzhou ctf finance centre
+Guangzhou International Finance Center\Z (2).jpg  zifeng tower
+Hagia Sophia\images (100).jpeg  great mosque of mecca
+Hagia Sophia\images (53).jpeg  radcliffe camera
+Hassan II Mosque\images (4).jpeg  great mosque of mecca
+Hassan II Mosque\images (41).jpeg  hagia sophia
+Headquarters of the United Nations\dd.jpeg  trump international hotel and tower chicago
+Headquarters of the United Nations\images (30).jpeg  trump international hotel and tower chicago
+Headquarters of the United Nations\images (43).jpeg  atomium
+Headquarters of the United Nations\images (5).jpeg  federation tower
+KK100\images (47).jpg  citic plaza
+KK100\images (50).jpg  the shard
+KK100\images (61).jpg  trump international hotel and tower chicago
+KK100\images (69).jpg  ping an finance centre
+KK100\images (73).jpg  ping an finance centre
+Kinkaku-ji\33.jpeg  angkor wat
+Krak des Chevaliers\images (80).jpeg  mehrangarh
+Lakhta Center\images (44).jpg  citic plaza
+Lakhta Center\images (53).jpg  shanghai tower
+Leaning Tower of Pisa\images (78).jpeg  guangzhou international finance center
+Leaning Tower of Pisa\images (94).jpeg  the louvre
+Lloyd's building\images (61).jpeg  city of capitals
+London Bridge\images (12).jpg  stockholm city hall
+London Bridge\images (35).jpg  the interlace
+London Bridge\images (50).jpg  lotte world tower
+London Bridge\images (61).jpg  burj khalifa
+London Bridge\images (68).jpg  space needle
+London Bridge\images (71).jpg  gateway arch
+Lotte World Tower\a.jpg  taipei 101
+Lotte World Tower\images (28).jpg  the shard
+Lotte World Tower\images (34).jpg  tokyo tower
+Mehrangarh\images (41).jpeg  notro dame de paries
+Mehrangarh\images (79).jpeg  colosseum
+Milad Tower\images (50).jpg  space needle
+Milad Tower\images (54).jpg  canton tower
+Milad Tower\images (75).jpg  palace of westminster
+Milad Tower\images (94).jpg  lakhta center
+Milad Tower\images (99).jpg  tour first
+Moscow Kremlin\images (51).jpeg  dome of the rock
+Moscow Kremlin\images (92).jpeg  colosseum
+Moscow Kremlin\images (94).jpeg  notro dame de paries
+National September 11 Memorial & Museum\2Q== (6).jpg  headquarters of the united nations
+Neuschwanstein Castle\images (47).jpeg  the louvre
+Notro Dame De Paries\images (50).jpeg  moscow kremlin
+Notro Dame De Paries\images (69).jpeg  cologne cathedral
+Notro Dame De Paries\images (95).jpeg  cologne cathedral
+One World Trade Center\images (28).jpg  zifeng tower
+One World Trade Center\images (51).jpg  evolution tower
+Palace of Westminster\download.jpeg  big ben
+Palace of Westminster\images (89).jpeg  buckingham palace
+Petronas Towers\download (10).jpeg  zifeng tower
+Petronas Towers\images (74).jpeg  city of capitals
+Radcliffe Camera\images (31).jpeg  st paul s cathedral
+Radcliffe Camera\images (54).jpeg  colosseum
+Ryugyong Hotel\images (15).jpeg  london bridge
+Ryugyong Hotel\images (83).jpeg  burj khalifa
+Shanghai Tower\images (16).jpg  guangzhou international finance center
+Shanghai Tower\images (31).jpg  one world trade center
+Shun Hing Square\2Q== (1).jpg  abenobashi terminal building
+Shun Hing Square\images (11).jpg  citic plaza
+Shun Hing Square\images (3).jpg  commerzbank tower
+Shun Hing Square\images (35).jpg  citic plaza
+Shun Hing Square\images (39).jpg  zifeng tower
+Shwedagon Pagoda\images (66).jpeg  the potala palace
+Smith Tower\download (4).jpeg  ryugyong hotel
+Smith Tower\images (38).jpeg  leaning tower of pisa
+Smith Tower\images (56).jpeg  tour first
+Smith Tower\images (59).jpeg  messeturm
+Smith Tower\images (81).jpeg  willis tower
+Solomon R. Guggenheim Museum\images (65).jpeg  white house
+Solomon R. Guggenheim Museum\images (75).j  peg  apple park
+Statue of Liberty\images (4).jpeg  petronas towers
+Taipei 101\images (66).jpeg  zifeng tower
+Taipei 101\images (73).jpeg  guangzhou international finance center
+Taj Mahal\maxresdefault.jpg  sydney opera house
+Taj Mahal\images-5.jpeg  sydney opera house
+The Interlace\images (79).jpeg  seattle central library
+The Louvre\images (69).jpeg  colosseum
+The Louvre\images (72).jpeg  the shard
+The Potala Palace\images (46).jpeg  burj khalifa
+The Potala Palace\images (72).jpeg  stockholm city hall
+Tokyo Tower\images (31).jpg  burj khalifa
+Tokyo Tower\images (80).jpg  shwedagon pagoda
+Tour First_\9k= (4)1.jpg  ping an finance centre
+Tour First_\images (20)1.jpg  trump international hotel and tower chicago
+Transamerica Pyramid\download (3).jpeg  shanghai tower
+Transamerica Pyramid\images (25).jpeg  tokyo tower
+Transamerica Pyramid\images (68).jpeg  shanghai tower
+Trump International Hotel and Tower (Chicago)\images (10)1.jpg  tour first
+Trump International Hotel and Tower (Chicago)\images (13)1.jpg  shanghai tower
+Trump International Hotel and Tower (Chicago)\images (27).jpg  willis tower
+Trump International Hotel and Tower (Chicago)\images.jpg  city of capitals
+Westin Peachtree Plaza Hotel\images (3).jpg  zifeng tower
+Westin Peachtree Plaza Hotel\images (36).jpg  guangzhou international finance center
+Westin Peachtree Plaza Hotel\images (79).jpg  guangzhou international finance center
+Westin Peachtree Plaza Hotel\images (88).jpg  20 fenchurch street
+Willis Tower\images (70).jpg  abenobashi terminal building
+Willis Tower\Z (6).jpg  guangzhou ctf finance centre
+Windsor Castle\images (13).jpeg  notro dame de paries
+Windsor Castle\images (92).jpeg  acropolis of athens
+Yokohama Landmark Tower\images (65).jpg  tour first
+Yokohama Landmark Tower\images (7).jpg  mercury city tower
+Yokohama Landmark Tower\s.jpg  citic plaza
+city of capitals\images (83).jpg  zifeng tower
+cn tower\images (55).jpg  burj khalifa
+cn tower\images (70).jpg  chrysler building
+dome of the rock\images.jpg  angkor wat
+international commerce centre\2Q== (1).jpg  guangzhou ctf finance centre
+international commerce centre\9k= (3).jpg  guangzhou ctf finance centre
+international commerce centre\a.jpg  guangzhou ctf finance centre
+international commerce centre\images (13).jpg  yokohama landmark tower
+international commerce centre\images (33).jpg  yokohama landmark tower
+international commerce centre\images (36).jpg  guangzhou ctf finance centre
+international commerce centre\images (81).jpg  shanghai tower
+messeturm\images (33).jpg  ping an finance centre
+messeturm\images (39).jpg  lakhta center
+messeturm\images (4).jpg  30 st mary axe
+messeturm\images (58).jpg  smith tower
+messeturm\images (59).jpg  trump international hotel and tower chicago
+messeturm\images (6).jpg  cn tower
+messeturm\images (64).jpg  432 park avenue
+messeturm\images (65).jpg  willis tower
+messeturm\images (75).jpg  seattle central library
+ping an finance centre\images (23).jpg  ryugyong hotel
+ping an finance centre\images (29).jpg  abenobashi terminal building
+st paul's cathedral\images (23).jpg  notro dame de paries
+st paul's cathedral\images (35).jpg  white house
+st paul's cathedral\images (93).jpg  london bridge
+the shard_\images (2).jpg  ping an finance centre
+the shard_\images (3).jpg  cologne cathedral
+the shard_\images (78).jpg  transamerica pyramid
+zifeng tower\9k=.jpg  ping an finance centre
+zifeng tower\images (84).jpg  willis tower
+zifeng tower\images (84).jpg  willis tower

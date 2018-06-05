@@ -8,6 +8,9 @@
 /ml_ws/__pycache__/
 /ml_ws/test_image/
 /app/.idea/
+/ml_ws/venv/
+/training/model/
+/app/deploy/
 /npm-debug.log
 *.jpg
 *.jpeg
