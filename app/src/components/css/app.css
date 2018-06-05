@@ -8,7 +8,7 @@
 }
 
 .App-header {
-  background-image: url("./HHWCMK.jpg");
+  background-image: url("./header.jpg");
     /* Full height */
     height: 200px;
 
@@ -27,54 +27,45 @@
 
 }
 
-.slider {
-  overflow-y: hidden;
-  max-height: 500px; /* approximate max height */
+.App-footer {
+    /* Full height */
+    height: 200px;
+    height: 150px;
 
-  transition-property: all;
-  transition-duration: .5s;
-  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
-}
-
-.App-footer { 
-    /* Full height */ 
-    height: 200px; 
-    height: 150px; 
- 
-    /* Center and scale the image nicely */ 
-    background-color: #494949; 
-    background-color: #f8f9fa!important; 
+    /* Center and scale the image nicely */
+    background-color: #494949;
+    background-color: #f8f9fa!important;
     bottom: 0; 
     color: rgba(4, 2, 2, 0.6);
-    border-radius:15px 15px 0px 0px; 
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12); 
-    margin-top: 1.5rem; 
-    padding-top: 1.5rem; 
-} 
- 
-.Contact{ 
-    text-align: center; 
-    padding-bottom: 1.2rem; 
-} 
- 
-.Version{ 
-    overflow: hidden; 
-    background-color: rgba(0,0,0,.1); 
-    font-size: .9rem; 
-    color: rgba(4, 2, 2, 0.6);
-    padding-bottom: 0.5rem; 
-    padding-top: 0.5rem; 
-    text-align: center; 
-} 
+    border-radius:15px 15px 0px 0px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+}
 
-.Result{ 
+.Contact{
+    text-align: center;
+    padding-bottom: 1.2rem;
+}
+
+.Version{
+    overflow: hidden;
+    background-color: rgba(0,0,0,.1);
+    font-size: .9rem;
+    color: rgba(4, 2, 2, 0.6);
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+    text-align: center;
+}
+
+.Result{
 /*    border-style: solid;
     border-width: 1px;*/
 }
- 
-.bodyContainer{ 
-  min-height: calc(100vh - 180px); 
-} 
+
+.bodyContainer{
+  min-height: calc(100vh - 180px);
+}
 
 .App-title {
   font-size: 1.5em;

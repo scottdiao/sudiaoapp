@@ -13,16 +13,46 @@ import tensorflow as tf
 import os, pickle, uuid, argparse
 import datastore_api as dsa
 import cnn
-from google.cloud import datastore
+from google.cloud import datastore, storage
+import io
+try:
+    from PIL import ImageEnhance
+    from PIL import Image as pil_image
+except ImportError:
+    pil_image = None
 
 
 app = Flask(__name__)
 CORS(app)
 ds = datastore.Client('atomic-amulet-199016')
 model_dir = './keras_model/inception_v3.h5'
-# model = load_model(model_dir)
+model = load_model(model_dir)
 graph = tf.get_default_graph()
 
+def load_img_from_url(path, grayscale=False, target_size=None,
+             interpolation='nearest'):
+    if pil_image is None:
+        raise ImportError('Could not import PIL.Image. '
+                          'The use of `array_to_img` requires PIL.')
+    img = pil_image.open(path)
+    if grayscale:
+        if img.mode != 'L':
+            img = img.convert('L')
+    else:
+        if img.mode != 'RGB':
+            img = img.convert('RGB')
+    if target_size is not None:
+        width_height_tuple = (target_size[1], target_size[0])
+        if img.size != width_height_tuple:
+            if interpolation not in _PIL_INTERPOLATION_METHODS:
+                raise ValueError(
+                    'Invalid interpolation method {} specified. Supported '
+                    'methods are {}'.format(
+                        interpolation,
+                        ", ".join(_PIL_INTERPOLATION_METHODS.keys())))
+            resample = _PIL_INTERPOLATION_METHODS[interpolation]
+            img = img.resize(width_height_tuple, resample)
+    return img
 
 @app.route('/')
 def index():
@@ -31,20 +61,22 @@ def index():
 @app.route('/building_uri', methods=['POST'])
 def building_uri():
     uri = request.json['uri']
-    if(uri.endswith('.png')):
-        filename='download.png'
-    elif(uri.endswith('.bmp')):
-        filename='download.bmp'
-    elif(uri.endswith('.gif')):
-        filename='download.gif'
-    else:
-        filename='download.jpg'
-    encrypt_filename = "./uploads/"+str(uuid.uuid1())+filename
-    if not request.json or not 'uri' in request.json:
-        abort(400)
-    urllib.request.urlretrieve(request.json['uri'], encrypt_filename)
-    response = run_keras_cnn(encrypt_filename)
-    os.remove(encrypt_filename)
+    # if(uri.endswith('.png')):
+    #     filename='download.png'
+    # elif(uri.endswith('.bmp')):
+    #     filename='download.bmp'
+    # elif(uri.endswith('.gif')):
+    #     filename='download.gif'
+    # else:
+    #     filename='download.jpg'
+    # encrypt_filename = "./uploads/"+str(uuid.uuid1())+filename
+    # if not request.json or not 'uri' in request.json:
+    #     abort(400)
+    # urllib.request.urlretrieve(request.json['uri'], encrypt_filename)
+    with urllib.request.urlopen(uri) as image_url:
+        f = io.BytesIO(image_url.read())
+    response = run_keras_cnn(f)
+    # os.remove(encrypt_filename)
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
@@ -53,10 +85,17 @@ def building_file():
     f = request.files['file']
     uuid = request.form.get("uuid")
     file_name = "./uploads/"+uuid+secure_filename(f.filename)
-    f.save(file_name)
-    # response = run_keras_cnn(file_name)
-    response = cnn.run_cnn(file_name)
-    os.remove(file_name)
+    # f.save(file_name)
+    client=storage.Client(project="atomic-amulet-199016")
+    bucket = client.bucket("atomic-amulet-199016")
+    blob = bucket.blob(file_name)
+    blob.upload_from_file(f, content_type=f.content_type)
+    url = blob.public_url
+    with urllib.request.urlopen(url) as image_url:
+        f = io.BytesIO(image_url.read())
+    response = run_keras_cnn(f)
+    # response = cnn.run_cnn(file_name)
+    # os.remove(file_name)
     return response
 
 @app.route('/upload', methods=['POST'])
@@ -76,11 +115,11 @@ def list():
     response =  jsonify(resjsonlist)
     return response
 
-def run_keras_cnn(file_name):
+def run_keras_cnn(file):
     img_width, img_height = 299, 299
     with open('./keras_model/class_dict.pkl', 'rb') as f:
         class_dict = pickle.load(f)
-    x = image.load_img(file_name, target_size=(img_width, img_height))
+    x = image.load_img(file, target_size=(img_width, img_height))
     x = np.expand_dims(x, axis=0)
     x=x.astype("float32")
     x.setflags(write=1)

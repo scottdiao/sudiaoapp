@@ -1,6 +1,10 @@
 Flask==0.12.2
 gunicorn==19.7.1
+flask_cors
 numpy
 tensorflow
 argparse
+keras
+pillow
+google.cloud
 

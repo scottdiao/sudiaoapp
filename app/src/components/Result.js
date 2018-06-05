@@ -61,7 +61,7 @@ class Result extends Component {
     }
 
     render() {
-        
+
         if(Object.keys(this.state.chartData).length === 0 || Object.keys(this.state.chartData.datasets).length === 0 || !this.state.showResult) {
             return null
         } else{
@@ -87,21 +87,21 @@ class Result extends Component {
             return (
             <div>
                 <Modal id="tableModal" name={capitalize(this.state.modalData.name)} alias={this.state.modalData.alias} mapsrc={mapsrc} />
-                <div className="card radiusLarge shadow animated zoomIn">
+                <div className="radiusLarge shadow animated zoomIn">
                     <div className="result-close sright">
-                         <button type="button" onClick={this.handleClose} className="close" data-dismiss="modal" aria-label="Close"> 
+                         <button type="button" onClick={this.handleClose} className="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div className="col-10 align-self-center" >
                         <div align="center">
                             <h4>Best Result</h4>
-                            <button type="button" className="btn btn-outline-info" id="result-0" onClick={this.handleClick} data-toggle="modal" data-target="#tableModal"> 
+                            <button type="button" className="btn btn-outline-info" id="result-0" onClick={this.handleClick} data-toggle="modal" data-target="#tableModal">
                                 {capitalize(bestResult)}
                             </button>
                         </div>
                         <div className="spacerTiny" />
-                        
+
                         <ul className="nav nav-pills nav-fill mb-3" id="pills-tab" role="tablist">
                             <li className="nav-item">
                                 <a className="nav-link active" id="pills-table-tab" data-toggle="pill" href={"#"+this.state.tapId.table} role="tab"
@@ -130,9 +130,9 @@ class Result extends Component {
                                         {tableRow}
                                         </tbody>
                                     </table>
-                                    
+
                                 </div>
-                                 
+
                             </div>
                             <div className="tab-pane fade" id={this.state.tapId.bar} role="tabpanel"  aria-labelledby="pills-bar-tab">
                                 <BarChart chartData={this.state.chartData} />

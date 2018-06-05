@@ -2,14 +2,19 @@
 /ml_ws/keras_retraining/building_photos/
 /test_image
 /ml_ws/env/
+/ml_ws/venv/
 /ml_ws/model/
 /ml_ws/uploads
 /ml_ws/legacy_model/
 /ml_ws/__pycache__/
 /ml_ws/test_image/
+/retrain/model/
 /app/.idea/
+<<<<<<< Updated upstream
 /ml_ws/venv/
 /training/model/
+=======
+>>>>>>> Stashed changes
 /app/deploy/
 /npm-debug.log
 *.jpg

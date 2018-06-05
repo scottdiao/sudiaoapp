@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-
+export const web_service_endpoint = 'https://atomic-amulet-199016.appspot.com/'
 
 
 export const testfunc=()=>{
     console.log("test function")
 }
 
+
+
 export const query_building_uri = async (data)=>{
     try {
         console.log("query cnn")
-        let response = await fetch('http://localhost:5000/building_uri',{
+        let response = await fetch(web_service_endpoint+'building_uri',{
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -30,7 +32,7 @@ export const query_building_uri = async (data)=>{
 export const query_building_file = async (data)=>{
     try {
         console.log("query cnn file")
-        let response = await fetch('http://localhost:5000/building_file',{
+        let response = await fetch(web_service_endpoint+'building_file',{
             method: 'POST',
             body: data
         });
@@ -45,7 +47,7 @@ export const query_building_file = async (data)=>{
 export const query_building_list = async ()=>{
     try {
         console.log("query cnn file")
-        let response = await fetch('http://localhost:5000/building_list');
+        let response = await fetch(web_service_endpoint+"building_list");
         let responseJson = await response.json()
 
         return responseJson;
