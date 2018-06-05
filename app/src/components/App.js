@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './css/foundation.css';
 import './css/app.css';
+import './css/animation.css';
 import './css/spinner.css';
 import { Switch, Route } from 'react-router-dom'
 import Introduction from './Introduction'

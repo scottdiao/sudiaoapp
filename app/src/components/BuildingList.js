@@ -61,7 +61,7 @@ class BuildingList extends Component {
           )
         }else{
           return (
-            <div className="row justify-content-center">
+            <div className="row justify-content-center animated fadeIn">
               <div className="col-8 align-self-center" align="center">
                 <ReactTable
                   data={list}
