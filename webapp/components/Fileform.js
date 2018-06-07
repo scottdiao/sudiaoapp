@@ -1,8 +1,8 @@
 import React from 'react';
 import './css/foundation.css';
 import './css/app.css';
-import '../../node_modules/react-dropzone-component/styles/filepicker.css'
-import '../../node_modules/dropzone/dist/min/dropzone.min.css'
+import '../node_modules/react-dropzone-component/styles/filepicker.css'
+import '../node_modules/dropzone/dist/min/dropzone.min.css'
 import {query_building_file, web_service_endpoint, test_web_service_endpoint} from '../api/Api'
 import Result from './Result';
 import ErrorMessage from './ErrorMessage'

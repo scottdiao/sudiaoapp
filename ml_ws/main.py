@@ -23,36 +23,12 @@ except ImportError:
 
 
 app = Flask(__name__)
+app.config['MAX_CONTENT_LENGTH'] = 160000 * 1024 * 1024
 CORS(app)
 ds = datastore.Client('atomic-amulet-199016')
-model_dir = './keras_model/inception_v3.h5'
+model_dir = './model/keras/inception_v3.h5'
 model = load_model(model_dir)
 graph = tf.get_default_graph()
-
-def load_img_from_url(path, grayscale=False, target_size=None,
-             interpolation='nearest'):
-    if pil_image is None:
-        raise ImportError('Could not import PIL.Image. '
-                          'The use of `array_to_img` requires PIL.')
-    img = pil_image.open(path)
-    if grayscale:
-        if img.mode != 'L':
-            img = img.convert('L')
-    else:
-        if img.mode != 'RGB':
-            img = img.convert('RGB')
-    if target_size is not None:
-        width_height_tuple = (target_size[1], target_size[0])
-        if img.size != width_height_tuple:
-            if interpolation not in _PIL_INTERPOLATION_METHODS:
-                raise ValueError(
-                    'Invalid interpolation method {} specified. Supported '
-                    'methods are {}'.format(
-                        interpolation,
-                        ", ".join(_PIL_INTERPOLATION_METHODS.keys())))
-            resample = _PIL_INTERPOLATION_METHODS[interpolation]
-            img = img.resize(width_height_tuple, resample)
-    return img
 
 @app.route('/')
 def index():
@@ -100,7 +76,10 @@ def building_file():
 
 @app.route('/upload', methods=['POST'])
 def upload():
-    return "uploaded"
+    print("receive upload")
+    response = jsonify({"content":"1"})
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 @app.route('/building_list')
 def list():

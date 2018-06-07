@@ -10,7 +10,7 @@ import numpy as np
 
 img_width, img_height = 299, 299
 
-model_dir = '../keras_model/inception_v3.h5'
+model_dir = '../model/keras/inception_v3.h5'
 train_data_dir = 'building_photos/train'
 validation_data_dir = 'building_photos/validation'
 test_data_dir = 'building_photos/test'
@@ -22,7 +22,7 @@ print("nb_train_samples: "+str(nb_train_samples))
 print("nb_validation_samples: "+str(nb_validation_samples))
 print("nb_test_samples: "+str(nb_test_samples))
 
-epochs = 3
+epochs = 5
 batch_size = 50
 
 
@@ -66,7 +66,7 @@ validation_generator = validation_datagen.flow_from_directory(
     class_mode='categorical',
     shuffle=False)
 class_dict = {v: k for k, v in train_generator.class_indices.items()}
-with open('../keras_model/class_dict.pkl', 'wb') as f:
+with open('../model/keras/class_dict.pkl', 'wb') as f:
     pickle.dump(class_dict, f, pickle.HIGHEST_PROTOCOL)
 print("saved class_indices")
 

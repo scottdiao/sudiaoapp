@@ -10,11 +10,9 @@
 /ml_ws/test_image/
 /retrain/model/
 /app/.idea/
-<<<<<<< Updated upstream
+/webapp/node_modules/
 /ml_ws/venv/
 /training/model/
-=======
->>>>>>> Stashed changes
 /app/deploy/
 /npm-debug.log
 *.jpg
