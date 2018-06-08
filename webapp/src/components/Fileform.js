@@ -33,7 +33,7 @@ class Fileform extends React.Component {
       this.componentConfig = {
           iconFiletypes: ['.jpg', '.png'],
           showFiletypeIcon: true,
-          postUrl: test_web_service_endpoint+'upload'
+          postUrl: '/uploadHandler'
       };
       this.callbackArray = [() => console.log('Hi!'), () => console.log('Ho!')];
     this.handleSubmit = this.handleSubmit.bind(this);

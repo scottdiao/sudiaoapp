@@ -6,9 +6,9 @@ flask run
 DEPLOY APPENGINE:
 python -m venv
 .\venv\Scripts\activate
-python -m pip install -r requirements.txt
+python3 -m pip install -r requirements.txt
 test:  
-python main.py
+python3 main.py
 prod:
 gcloud app deploy
 
