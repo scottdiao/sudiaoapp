@@ -1,0 +1,6 @@
+test:
+npm run expressdev
+deploy:
+gcloud config set project sudiaoapp-frontend
+npm run build
+gcloud app deploy

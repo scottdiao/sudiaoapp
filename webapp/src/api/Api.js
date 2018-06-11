@@ -58,10 +58,12 @@ export const query_building_list = async ()=>{
 }
 
 export function capitalize(str) {
+    var doNotUpper = {'of' : 1, 'the':1, 'and':1};
+    var uppderAll = {'cctv' : 1,'citic':1, 'ctf':1, 'ii':1, 'kk100':1};
     if(str===''||str===undefined){
         return;
     }
-    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+    return str.replace(/\w\S*/g, function(txt){return doNotUpper[txt] ? txt: uppderAll[txt]?txt.toUpperCase():txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 }
 
 export function convertWikiLink(str) {

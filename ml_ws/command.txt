@@ -8,11 +8,13 @@ python -m venv
 .\venv\Scripts\activate
 python3 -m pip install -r requirements.txt
 test:  
-python3 main.py
+python main.py
 prod:
+gcloud config set project atomic-amulet-199016
 gcloud app deploy
 
 HTTP Request:
+curl -i -H "Content-Type: application/json" -X POST -d '{"uri":"https://upload.wikimedia.org/wikipedia/commons/e/e3/Hello%2C_I_live_here.jpg"}' localhost:5000/building_uri
 curl -i -H "Content-Type: application/json" -X POST -d '{"uri":"https://upload.wikimedia.org/wikipedia/commons/e/e3/Hello%2C_I_live_here.jpg"}' https://ml-ws-206116.appspot.com/building_uri
 curl -i -H "Content-Type: application/json" -X POST -d '{"uri":"https://upload.wikimedia.org/wikipedia/commons/e/e3/Hello%2C_I_live_here.jpg"}' https://atomic-amulet-199016.appspot.com/download
 

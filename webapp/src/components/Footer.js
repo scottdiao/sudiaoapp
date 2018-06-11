@@ -10,13 +10,13 @@ const Footer = () => (
           <div class="col-md-12 mt-md-0 mt-3">
           	<div><i class="fas fa-envelope"></i> scottdiao33@gmail.com</div>
            	<div><i class="fas fa-phone"></i> 334-498-5045</div>
-            <div><i class="fab fa-github"></i> <a href="https://github.com/scottdiao/sudiaoapp">GitHub</a></div>
+            <div><i class="fab fa-github"></i> <a href="https://github.com/scottdiao/sudiaoapp" target="_blank">GitHub</a></div>
           </div>
           <hr class="clearfix w-100 d-md-none pb-3"/>
         </div>
       </div>
       <div class="Version">
-      	<i class="far fa-clone"></i> v 1.0.2
+      	<i class="far fa-clone"></i> v 1.0.4
       </div>
     </footer>
 

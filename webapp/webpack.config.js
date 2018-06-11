@@ -7,8 +7,9 @@ console.log("__dirname:   "+__dirname)
 module.exports = options => {
   return {
     entry: './src/index.js',
+	context: __dirname,
     output: {
-      publicPath: bundlePath+"/",
+      publicPath: "./",
       path: bundlePath+"/",
       filename: 'bundle.js'
     },
@@ -23,17 +24,28 @@ module.exports = options => {
     	    test: /\.css$/,
     			loader:[ 'style-loader', 'css-loader' ]
         },
-    		{
-    			test: /\.(svg|png|jpg|gif)$/,
-          use: [
-            {
-              loader: 'file-loader',
-              options: {
-                useRelativePath:true
-              }
-            }
-          ]
-    		}
+		{
+			test: /\.(svg)$/,
+			use: [
+				{
+				  loader: 'url-loader',
+					options: {
+					  limit: 8192
+					}
+				}
+			]
+		},
+		{
+			test: /\.(png|jpg|gif)$/,
+			use: [
+				{
+				  loader: 'file-loader',
+					options: {
+					  //name: '[name].[ext]'
+					}
+				}
+			]
+		}
       ]
     },
     resolve: { 

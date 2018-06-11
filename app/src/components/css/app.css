@@ -8,7 +8,7 @@
 }
 
 .App-header {
-  background-image: url("./header.jpg");
+  background-image: url("~/header.jpg");
     /* Full height */
     height: 200px;
 

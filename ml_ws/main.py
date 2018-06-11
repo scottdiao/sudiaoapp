@@ -23,7 +23,6 @@ except ImportError:
 
 
 app = Flask(__name__)
-app.config['MAX_CONTENT_LENGTH'] = 160000 * 1024 * 1024
 CORS(app)
 ds = datastore.Client('atomic-amulet-199016')
 model_dir = './model/keras/inception_v3.h5'
@@ -96,7 +95,7 @@ def list():
 
 def run_keras_cnn(file):
     img_width, img_height = 299, 299
-    with open('./keras_model/class_dict.pkl', 'rb') as f:
+    with open('./model/keras/class_dict.pkl', 'rb') as f:
         class_dict = pickle.load(f)
     x = image.load_img(file, target_size=(img_width, img_height))
     x = np.expand_dims(x, axis=0)

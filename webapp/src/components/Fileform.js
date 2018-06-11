@@ -6,8 +6,8 @@ import '../../node_modules/dropzone/dist/min/dropzone.min.css'
 import {query_building_file, web_service_endpoint, test_web_service_endpoint} from '../api/Api'
 import Result from './Result';
 import ErrorMessage from './ErrorMessage'
-// import DropzoneComponent from './DropzoneComponent';
-import DropzoneComponent from 'react-dropzone-component';
+import DropzoneComponent from './DropzoneComponent';
+
 
 class Fileform extends React.Component {
   constructor() {
