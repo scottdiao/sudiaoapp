@@ -59,7 +59,7 @@ def building_uri():
 def building_file():
     f = request.files['file']
     uuid = request.form.get("uuid")
-    file_name = "./uploads/"+uuid+secure_filename(f.filename)
+    file_name = uuid+secure_filename(f.filename)
     # f.save(file_name)
     client=storage.Client(project="atomic-amulet-199016")
     bucket = client.bucket("atomic-amulet-199016")
@@ -75,7 +75,6 @@ def building_file():
 
 @app.route('/upload', methods=['POST'])
 def upload():
-    print("receive upload")
     response = jsonify({"content":"1"})
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response

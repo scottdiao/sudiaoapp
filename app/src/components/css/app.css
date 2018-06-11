@@ -8,7 +8,7 @@
 }
 
 .App-header {
-  background-image: url("~/header.jpg");
+  background-image: url("./header.jpg");
     /* Full height */
     height: 200px;
 
@@ -29,11 +29,9 @@
 
 .App-footer {
     /* Full height */
-    height: 200px;
-    height: 150px;
+    flex-shrink: 0;
 
     /* Center and scale the image nicely */
-    background-color: #494949;
     background-color: #f8f9fa!important;
     bottom: 0;
     color: rgba(4, 2, 2, 0.6);
@@ -58,9 +56,17 @@
     text-align: center;
 }
 
+html, body {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+
 
 .bodyContainer{
-  min-height: calc(100vh - 180px);
+  flex: 1 0 auto;
 }
 
 .App-title {

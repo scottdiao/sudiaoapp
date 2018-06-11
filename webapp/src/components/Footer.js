@@ -12,7 +12,6 @@ const Footer = () => (
            	<div><i class="fas fa-phone"></i> 334-498-5045</div>
             <div><i class="fab fa-github"></i> <a href="https://github.com/scottdiao/sudiaoapp" target="_blank">GitHub</a></div>
           </div>
-          <hr class="clearfix w-100 d-md-none pb-3"/>
         </div>
       </div>
       <div class="Version">
