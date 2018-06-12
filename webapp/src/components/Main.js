@@ -7,7 +7,7 @@ class Main extends Component{
         return(
         <div>
             <div className="row justify-content-center" >
-                <div className="col-8" align="center">
+                <div className="col-lg-8 col-sm-12" align="center">
                     <ul className="nav nav-tabs nav-fill" id="myTab" role="tablist">
                         <li className="nav-item">
                             <a className="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
@@ -21,7 +21,7 @@ class Main extends Component{
                 </div>
             </div>
             <div className="row justify-content-center" >
-                <div className="col-11" align="center">
+                <div className="col-12" align="center">
                     <div className="spacer"/>
                     <div className="tab-content" id="myTabContent">
                         <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"><Fileform /></div>

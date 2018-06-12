@@ -6,7 +6,7 @@ class Introduction extends Component {
   render() {
     return (
         <div className="row justify-content-center">
-            <div className="col-9">
+            <div className="col-lg-9 col-sm-12">
                 <div class="card" >
                     <div class="card-body">
                         <h5 class="card-title">Introduction</h5>

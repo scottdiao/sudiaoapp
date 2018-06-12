@@ -93,10 +93,10 @@ class Result extends Component {
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div className="col-10 align-self-center" >
+                    <div className="col-lg-8 col-sm-10 align-self-center" >
                         <div align="center">
                             <h4>Best Result</h4>
-                            <button type="button" className="btn btn-outline-info" id="result-0" onClick={this.handleClick} data-toggle="modal" data-target="#tableModal">
+                            <button type="button" className="btn btn-outline-info building-name" id="result-0" onClick={this.handleClick} data-toggle="modal" data-target="#tableModal">
                                 {capitalize(bestResult)}
                             </button>
                         </div>

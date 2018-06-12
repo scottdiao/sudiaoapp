@@ -165,10 +165,10 @@ async handleSubmit(event) {
 
 
       return   <div >
-                <div className="col-8 align-self-center" align="center">
+                <div className="col-lg-6 col-sm-12 align-self-center" align="center">
                       <ErrorMessage error={this.state.error} />
                 </div>
-                  <div className="col-6 align-self-center" align="center">
+                  <div className="col-lg-4 col-sm-12 align-self-center" align="center">
 
                       <form onSubmit={this.handleSubmit.bind(this)} name="dropzone" encType="multipart/form-data">
                           <DropzoneComponent className="fileDropZone" config={config}
