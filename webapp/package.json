@@ -31,19 +31,20 @@
   },
   "dependencies": {
     "babel-runtime": "^6.26.0",
-    "react": "^16.4.0",
-    "react-dom": "^16.4.0",
     "chart.js": "^2.7.2",
     "classnames": "^2.2.5",
+    "express": "^4.13.4",
     "font-awesome": "^4.7.0",
     "isomorphic-fetch": "^2.2.1",
+    "multer": "^1.1.0",
+    "react": "^16.4.0",
     "react-chartjs-2": "^2.7.0",
+    "react-dom": "^16.4.0",
     "react-dropzone": "^4.2.9",
     "react-dropzone-component": "^3.2.0",
     "react-foundation": "^0.9.4",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "multer": "^1.1.0",
-    "express": "^4.13.4"
+    "sweetalert": "^2.1.0"
   }
 }

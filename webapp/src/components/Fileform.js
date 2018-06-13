@@ -25,7 +25,7 @@ class Fileform extends React.Component {
       this.djsConfig = {
           addRemoveLinks: true,
           acceptedFiles: "image/jpeg,image/png",
-          maxFilesize: 500,
+          maxFilesize: 5,
           // autoProcessQueue: false,
           maxFiles: 1
       };
@@ -68,15 +68,35 @@ async handleSubmit(event) {
     event.preventDefault();
     const data = new FormData(event.target);
     const file = this.state.files
-    if(Object.keys(this.state.files).length === 0){
+
+    if(Object.keys(file).length === 0){
         this.setState({error: {
                 hasError:true,
                 errorMes:"No image to upload"
             }});
         return
     }
+    console.log(JSON.stringify(file))
+    if(file.size  >5*1024*1024){
+      this.setState({error: {
+              hasError:true,
+              errorMes:"Image size too large. Maximum 5MB "
+          }});
+      return
+    }else if(file.type!=='image/png'&&file.type !=='image/jpeg'){
+      this.setState({error: {
+              hasError:true,
+              errorMes:"Image type only accpet JPG, JPEG, PNG "
+          }});
+      return
+    }
+
     data.append('file', file)
     data.append('uuid', uuid)
+
+    for (var value of data.values()) {
+       console.log(value);
+    }
     this.setState({isLoading: true});
     let res = await query_building_file(data);
     this.setState({isLoading: false});

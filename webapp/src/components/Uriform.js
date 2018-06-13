@@ -105,7 +105,7 @@ async handleSubmit(event) {
               </div>
               <div className="col-lg-8 col-sm-12 align-self-center" >
                   <form onSubmit={this.handleSubmit.bind(this)}>
-                      Image URI: <input type="text" name="imageuri"/>
+                      Image URL: <input type="text" name="imageuri"/>
                       <div className="spacerSmall"/>
                       <div>
                           {button}
@@ -113,8 +113,8 @@ async handleSubmit(event) {
                       <div className="spacer"/>
                   </form>
               </div>
-          
-          
+
+
               <div className="col-12 align-self-center" >
                   {result}
               </div>

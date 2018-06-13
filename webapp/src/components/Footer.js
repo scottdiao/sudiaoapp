@@ -15,7 +15,7 @@ const Footer = () => (
         </div>
       </div>
       <div class="Version">
-      	<i class="far fa-clone"></i> v 1.0.4
+      	<i class="far fa-clone"></i> v 1.1.0
       </div>
     </footer>
 

@@ -15,7 +15,7 @@ class Main extends Component{
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                               aria-controls="profile" aria-selected="false">Image uri</a>
+                               aria-controls="profile" aria-selected="false">Image URL</a>
                         </li>
                     </ul>
                 </div>

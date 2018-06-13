@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import extend from 'extend'
 import { Icon } from './icon'
+import swal from 'sweetalert'
 
 let Dropzone = null
 
@@ -177,8 +178,8 @@ export class DropzoneComponent extends React.Component {
 
         this.dropzone.on('addedfile', (file) => {
             if (!file) return
-
             const files = this.state.files || []
+
             if(this.state.files.length>=1){
                 console.log("file greater than 1")
                 return
@@ -186,8 +187,11 @@ export class DropzoneComponent extends React.Component {
                 files.push(file)
                 this.setState({ files })
             }
+        })
 
-
+        this.dropzone.on('error', function(file, mes) {
+            swal("Oops!", mes, "error")
+            this.removeAllFiles();
         })
 
         this.dropzone.on('removedfile', (file) => {
@@ -204,6 +208,7 @@ export class DropzoneComponent extends React.Component {
         })
 
         this.dropzone.on('maxfilesexceeded', function(file) {
+            console.log(this)
             console.log("max exceeded")
             this.removeAllFiles();
             this.addFile(file);

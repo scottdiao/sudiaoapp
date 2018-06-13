@@ -15,6 +15,8 @@
 /training/model/
 /app/deploy/
 /npm-debug.log
+bundle.js
+package-lock.json
 *.jpg
 *.jpeg
 *.png
