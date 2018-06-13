@@ -17,6 +17,7 @@
 /npm-debug.log
 bundle.js
 package-lock.json
+npm-debug.log
 *.jpg
 *.jpeg
 *.png

@@ -11,12 +11,6 @@ function createCommonjsModule(fn, module) {
 }
 
 var classnames = createCommonjsModule(function (module) {
-/*!
-  Copyright (c) 2016 Jed Watson.
-  Licensed under the MIT License (MIT), see
-  http://jedwatson.github.io/classnames
-*/
-/* global define */
 
 (function () {
 	var hasOwn = {}.hasOwnProperty;

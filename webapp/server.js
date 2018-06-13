@@ -3,16 +3,14 @@ const app = express()
 const path = require("path");
 
 app.set('port', process.env.PORT || 3000)
-//app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.static('public'))
 app.use('/introduction', express.static('public'))
 app.use('/list', express.static('public'))
-console.log("express dir name"+__dirname)
 
-// Call the multerImpl and pass in app state to it
+
 require('./src-server/multerImpl')(app)
 
 module.exports = app.listen(app.get('port'), () => {
   console.log('Express server listening on port ' + app.get('port'))
-  console.log('Visit http://localhost:' + app.get('port') + '/ to check out the upload example')
+  console.log('Visit http://localhost:' + app.get('port'))
 })

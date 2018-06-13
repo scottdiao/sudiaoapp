@@ -29,7 +29,6 @@ async handleSubmit(event) {
     event.preventDefault();
     const data = new FormData(event.target);
     const uri = data.get('imageuri');
-    console.log("uri: "+data.get('imageuri'))
     if(typeof(uri) === 'undefined' || uri === ''){
         this.setState({error: {
                 hasError:true,

@@ -29,11 +29,8 @@ class ResultTable extends Component {
     handleClick(e){
         e.preventDefault();
         var id = Number(e.target.id.slice(-1));
-        console.log("id"+id)
         const name = this.state.chartData.labels[id];
         const detail = this.state.resultList[name];
-        console.log("set state success"+JSON.stringify(this.state.test))
-        console.log("detail"+JSON.stringify(detail))
         this.setState({
             modalData:{
                 name:name,
@@ -41,9 +38,6 @@ class ResultTable extends Component {
                 place_id:detail.place_id
             },
         })
-        console.log("modal data"+JSON.stringify(this.state.modalData))
-        console.log("set state success"+JSON.stringify(this.state.test))
-
     }
 
 
